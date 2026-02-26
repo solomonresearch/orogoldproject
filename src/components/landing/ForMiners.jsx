@@ -22,7 +22,7 @@ export default function ForMiners() {
             {
               icon: Briefcase,
               title: "For Investors",
-              sub: "Access institutional gold at a discount",
+              sub: "Access institutional gold-backed digital assets",
               points: [
                 "Gold-price exposure + staking yield (up to 15%)",
                 "5 tranches from $10K to $1M minimum",

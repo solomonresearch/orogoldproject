@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ChevronRight, Info, Globe, BarChart3, CheckCircle, Clock, DollarSign, ArrowUpRight } from "lucide-react";
-import { GOLD, GOLD_LIGHT, GOLD_DIM, DARK, MUTED, CARD_BG, BORDER, GREEN } from "../../constants/colors.js";
+import { GOLD, GOLD_LIGHT, GOLD_DIM, DARK, MUTED, CARD_BG, BORDER } from "../../constants/colors.js";
 import { tranches } from "../../constants/data.js";
 import StatusBadge from "../shared/StatusBadge.jsx";
 import AllocationBar from "../shared/AllocationBar.jsx";
@@ -44,10 +44,9 @@ export default function TrancheTableSection() {
                   </div>
                   <StatusBadge status={t.status} />
                 </div>
-                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8 }}>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
                   <div><div style={{ fontSize: 10, color: MUTED }}>Price</div><div style={{ fontSize: 13, fontWeight: 700, color: GOLD, fontFamily: "Georgia, serif" }}>{t.pricePerToken}</div></div>
-                  <div><div style={{ fontSize: 10, color: MUTED }}>Discount</div><div style={{ fontSize: 12, fontWeight: 700, color: GREEN }}>{t.discount}</div></div>
-                  <div><div style={{ fontSize: 10, color: MUTED }}>Lock-up</div><div style={{ fontSize: 12, color: DARK }}>{t.lockup}</div></div>
+                  <div><div style={{ fontSize: 10, color: MUTED }}>Ounces</div><div style={{ fontSize: 12, fontWeight: 600, color: DARK, fontFamily: "Georgia, serif" }}>{(t.totalOz / 1000000).toFixed(1)}M</div></div>
                 </div>
                 <div style={{ marginTop: 10 }}><AllocationBar pct={t.allocLeft} /></div>
                 {expandedRow === i && (
@@ -65,20 +64,18 @@ export default function TrancheTableSection() {
         ) : (
           /* Desktop table */
           <div style={{ background: "#fff", borderRadius: 10, border: `1px solid ${BORDER}`, overflow: "hidden" }}>
-            <div style={{ display: "grid", gridTemplateColumns: "0.35fr 1.3fr 0.7fr 0.85fr 0.7fr 0.65fr 0.7fr 1.1fr 0.55fr", padding: "12px 16px", background: GOLD, gap: 6 }}>
-              {["", "TRANCHE", "STATUS", "OUNCES", "PRICE", "DISCOUNT", "LOCK-UP", "REMAINING", ""].map((h, i) => (<div key={i} style={{ fontSize: 9, fontWeight: 700, color: "#fff", letterSpacing: 1.2 }}>{h}</div>))}
+            <div style={{ display: "grid", gridTemplateColumns: "0.35fr 1.3fr 0.7fr 0.85fr 0.7fr 1.1fr 0.55fr", padding: "12px 16px", background: GOLD, gap: 6 }}>
+              {["", "TRANCHE", "STATUS", "OUNCES", "PRICE", "REMAINING", ""].map((h, i) => (<div key={i} style={{ fontSize: 9, fontWeight: 700, color: "#fff", letterSpacing: 1.2 }}>{h}</div>))}
             </div>
             {tranches.map((t, i) => (
               <div key={t.id}>
-                <div style={{ display: "grid", gridTemplateColumns: "0.35fr 1.3fr 0.7fr 0.85fr 0.7fr 0.65fr 0.7fr 1.1fr 0.55fr", padding: "12px 16px", gap: 6, alignItems: "center", background: hoveredRow === i ? `${GOLD}08` : i % 2 === 0 ? "#fff" : CARD_BG, borderBottom: `1px solid ${BORDER}`, cursor: "pointer", transition: "background 0.15s" }}
+                <div style={{ display: "grid", gridTemplateColumns: "0.35fr 1.3fr 0.7fr 0.85fr 0.7fr 1.1fr 0.55fr", padding: "12px 16px", gap: 6, alignItems: "center", background: hoveredRow === i ? `${GOLD}08` : i % 2 === 0 ? "#fff" : CARD_BG, borderBottom: `1px solid ${BORDER}`, cursor: "pointer", transition: "background 0.15s" }}
                   onMouseEnter={() => setHoveredRow(i)} onMouseLeave={() => setHoveredRow(null)} onClick={() => setExpandedRow(expandedRow === i ? null : i)}>
                   <div style={{ display: "flex", justifyContent: "center" }}><div style={{ width: 28, height: 28, borderRadius: "50%", background: t.status === "Open" ? GOLD : t.status === "Coming Soon" ? GOLD_DIM : BORDER, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 11, fontWeight: 700, color: "#fff" }}>T{i + 1}</div></div>
                   <div><div style={{ fontSize: 13, fontWeight: 700, color: DARK }}>{t.name}</div><div style={{ fontSize: 10, color: MUTED }}>{t.investors} · Min. {t.minInvest}</div></div>
                   <StatusBadge status={t.status} />
                   <div><div style={{ fontSize: 13, fontWeight: 600, color: DARK, fontFamily: "Georgia, serif" }}>{(t.totalOz / 1000000).toFixed(1)}M</div><div style={{ fontSize: 10, color: MUTED }}>{t.reserved > 0 ? `${(t.reserved / 1000).toFixed(0)}K sold` : "—"}</div></div>
                   <div style={{ fontSize: 13, fontWeight: 700, color: GOLD, fontFamily: "Georgia, serif" }}>{t.pricePerToken}</div>
-                  <div style={{ fontSize: 12, fontWeight: 700, color: GREEN }}>{t.discount}</div>
-                  <div style={{ fontSize: 12, color: DARK }}>{t.lockup}</div>
                   <AllocationBar pct={t.allocLeft} />
                   <div style={{ display: "flex", justifyContent: "center" }}><ChevronRight size={15} color={MUTED} style={{ transform: expandedRow === i ? "rotate(90deg)" : "none", transition: "transform 0.2s" }} /></div>
                 </div>
@@ -98,8 +95,8 @@ export default function TrancheTableSection() {
                 )}
               </div>
             ))}
-            <div style={{ display: "grid", gridTemplateColumns: "0.35fr 1.3fr 0.7fr 0.85fr 0.7fr 0.65fr 0.7fr 1.1fr 0.55fr", padding: "12px 16px", background: GOLD, gap: 6, alignItems: "center" }}>
-              <div /><div style={{ fontSize: 12, fontWeight: 700, color: "#fff", letterSpacing: 1 }}>TOTAL OROx1</div><div /><div style={{ fontSize: 14, fontWeight: 700, color: "#fff", fontFamily: "Georgia, serif" }}>10.0M</div><div /><div /><div /><div style={{ fontSize: 11, fontWeight: 600, color: "#fff" }}>{pctDeployed}% committed</div><div />
+            <div style={{ display: "grid", gridTemplateColumns: "0.35fr 1.3fr 0.7fr 0.85fr 0.7fr 1.1fr 0.55fr", padding: "12px 16px", background: GOLD, gap: 6, alignItems: "center" }}>
+              <div /><div style={{ fontSize: 12, fontWeight: 700, color: "#fff", letterSpacing: 1 }}>TOTAL OROx1</div><div /><div style={{ fontSize: 14, fontWeight: 700, color: "#fff", fontFamily: "Georgia, serif" }}>10.0M</div><div /><div style={{ fontSize: 11, fontWeight: 600, color: "#fff" }}>{pctDeployed}% committed</div><div />
             </div>
           </div>
         )}
