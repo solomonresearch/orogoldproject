@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Shield, TrendingUp, Lock, Unlock, Globe, Coins, ChevronRight, ChevronDown, Info, Clock, AlertTriangle, CheckCircle, ArrowUpRight, Layers, BarChart3, Gem, Wallet, Zap, DollarSign, Package, Briefcase } from "lucide-react";
+import { Shield, TrendingUp, Lock, Unlock, Globe, Coins, ChevronRight, ChevronDown, Info, Clock, AlertTriangle, CheckCircle, ArrowUpRight, Layers, BarChart3, Gem, Wallet, Zap, DollarSign, Package, Briefcase, ExternalLink, FileText } from "lucide-react";
 
 import { GOLD, GOLD_LIGHT, GOLD_DIM, DARK, MUTED, CARD_BG, BORDER, GREEN, RED, BG } from "./constants/colors.js";
 import { tranches, timeSteps, riskLabels, riskColors, yieldMatrix, earlyExitFees, portfolioAllocations, strategyDescriptions } from "./constants/data.js";
@@ -54,6 +54,12 @@ export default function ORODashboard({ onNavigate }) {
                 Back to Home
               </button>
             )}
+            <a href="https://docsend.com" target="_blank" rel="noopener noreferrer" style={{ background: GOLD, color: "#fff", border: "none", borderRadius: 6, padding: "5px 14px", fontSize: 11, fontWeight: 700, cursor: "pointer", display: "flex", alignItems: "center", gap: 5, letterSpacing: 0.5, textDecoration: "none" }}
+              onMouseEnter={e => e.currentTarget.style.background = GOLD_LIGHT}
+              onMouseLeave={e => e.currentTarget.style.background = GOLD}
+            >
+              <FileText size={12} /> Data Room <ExternalLink size={10} />
+            </a>
             <div style={{ display: "flex", alignItems: "center", gap: 5, background: "#E8F5E9", borderRadius: 6, padding: "5px 12px" }}>
               <div style={{ width: 6, height: 6, borderRadius: "50%", background: GREEN }} /><span style={{ fontSize: 11, fontWeight: 600, color: GREEN }}>Live</span>
             </div>
@@ -85,6 +91,16 @@ export default function ORODashboard({ onNavigate }) {
               <div style={{ fontSize: 10, color: MUTED }}>{kpi.sub}</div>
             </div>
           ))}
+        </div>
+
+        {/* DISCLAIMER */}
+        <div style={{ margin: "14px 32px 0", background: `${GOLD}08`, border: `1px solid ${GOLD}20`, borderRadius: 8, padding: "10px 16px", display: "flex", alignItems: "center", gap: 10 }}>
+          <Info size={14} color={GOLD} style={{ flexShrink: 0 }} />
+          <span style={{ fontSize: 11, color: MUTED, lineHeight: 1.5 }}>
+            <strong style={{ color: DARK }}>Disclaimer:</strong> All figures, yields, allocations, and projections displayed on this dashboard are for <strong style={{ color: DARK }}>illustrative and display purposes only</strong>. They do not constitute financial advice or a guarantee of returns. Please refer to the{" "}
+            <a href="https://docsend.com" target="_blank" rel="noopener noreferrer" style={{ color: GOLD, fontWeight: 600, textDecoration: "underline" }}>Data Room</a>{" "}
+            for official documentation.
+          </span>
         </div>
 
         {/* TABS */}
@@ -361,9 +377,15 @@ export default function ORODashboard({ onNavigate }) {
         </div>
       </div>
 
-      <div style={{ borderTop: `1px solid ${BORDER}`, padding: "10px 32px", display: "flex", justifyContent: "space-between" }}>
-        <span style={{ fontSize: 9, color: MUTED }}>CONFIDENTIAL · FOR QUALIFIED INVESTORS ONLY · OROx1 Segregated Portfolio</span>
-        <span style={{ fontSize: 9, color: MUTED }}>OROx1 Gold-Backed Digital Asset © 2026</span>
+      <div style={{ borderTop: `1px solid ${BORDER}`, padding: "12px 32px" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
+          <span style={{ fontSize: 9, color: MUTED }}>CONFIDENTIAL · FOR QUALIFIED INVESTORS ONLY · OROx1 Segregated Portfolio</span>
+          <span style={{ fontSize: 9, color: MUTED }}>OROx1 Gold-Backed Digital Asset © 2026</span>
+        </div>
+        <div style={{ fontSize: 9, color: MUTED, lineHeight: 1.6 }}>
+          All data, figures, projections, and yields shown are for display purposes only and do not constitute an offer, solicitation, or guarantee of returns.{" "}
+          <a href="https://docsend.com" target="_blank" rel="noopener noreferrer" style={{ color: GOLD, textDecoration: "underline" }}>Access the Data Room</a> for official documentation and disclosures.
+        </div>
       </div>
     </div>
   );
