@@ -6,9 +6,9 @@ import SectionWrapper from "../shared/SectionWrapper.jsx";
 import useIsMobile from "../../hooks/useIsMobile.js";
 
 const buckets = [
-  { pct: "30–35%", label: "Physical & Digital Gold", sub: "LBMA bullion + OROx tokens in vaulted custody", color: GOLD },
+  { pct: "30–35%", label: "Physical & Digital Gold", sub: "Bullion + OROx tokens in vaulted custody", color: GOLD },
   { pct: "30–35%", label: "Production Contracts", sub: "Doré & refined gold at $750–$2,000/oz · up to 15yr terms", color: "#2E8B57" },
-  { pct: "25–35%", label: "Qualified Reserves", sub: "NI 43-101 & JORC certified mine resources", color: "#5B6ABF" },
+  { pct: "25–35%", label: "Qualified Reserves", sub: "JORC/43-101 certified mine resources", color: "#5B6ABF" },
   { pct: "15–20%", label: "Liquid Assets", sub: "USD/USDC buffer for mine capex funding", color: "#4A90D9" },
   { pct: "Up to 20%", label: "Structured Leverage", sub: "3rd party debt secured against gold, plant, machinery", color: "#8B5E3C" },
 ];
@@ -21,12 +21,12 @@ export default function PortfolioComposition() {
     <SectionWrapper id="portfolio" style={{ padding: isMobile ? "60px 20px" : "80px 40px", background: "#fff" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 48 }}>
-          <span style={{ fontSize: 10, color: GOLD, fontWeight: 700, letterSpacing: 2 }}>V-GOLD PORTFOLIO</span>
+          <span style={{ fontSize: 10, color: GOLD, fontWeight: 700, letterSpacing: 2 }}>OROx1 SP PORTFOLIO</span>
           <h2 style={{ fontSize: isMobile ? 28 : 36, fontWeight: 700, color: DARK, fontFamily: "Georgia, serif", margin: "10px 0 12px" }}>
             Diversified Gold-Backed Portfolio
           </h2>
           <p style={{ fontSize: 15, color: MUTED, maxWidth: 600, margin: "0 auto", lineHeight: 1.6 }}>
-            The V-Gold Segregated Portfolio holds a globally balanced mix of physical gold, production contracts, and reserves.
+            The OROx1 Segregated Portfolio holds a globally balanced pool of assets including physical gold, production contracts, and reserves.
           </p>
         </div>
 

@@ -5,11 +5,11 @@ import SectionWrapper from "../shared/SectionWrapper.jsx";
 import useIsMobile from "../../hooks/useIsMobile.js";
 
 const badges = [
-  { icon: Shield, label: "JORC 2012", sub: "Reserve Certification" },
-  { icon: Globe, label: "Cayman Islands", sub: "Segregated Portfolio" },
-  { icon: CheckCircle, label: "LBMA Accredited", sub: "Vault Custody" },
+  { icon: Shield, label: "JORC/43-101", sub: "Reserve Certification" },
+  { icon: Globe, label: "Segregated Portfolio", sub: "Ring-Fenced Structure" },
+  { icon: CheckCircle, label: "Accredited Vaults", sub: "Tier 1 Custody" },
   { icon: Lock, label: "KYC / AML", sub: "Compliance Framework" },
-  { icon: Shield, label: "NI 43-101", sub: "Canadian Standard" },
+  { icon: Shield, label: "Tier I Certified", sub: "International Standard" },
   { icon: CheckCircle, label: "Quarterly Audit", sub: "Independent Attestation" },
 ];
 

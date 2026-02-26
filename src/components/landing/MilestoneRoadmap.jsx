@@ -4,8 +4,8 @@ import SectionWrapper from "../shared/SectionWrapper.jsx";
 import useIsMobile from "../../hooks/useIsMobile.js";
 
 const milestones = [
-  { phase: "Phase 1", title: "Foundation", items: ["Token architecture & legal structure", "JORC reserve certification", "Anchor tranche (T1) launch"], status: "complete" },
-  { phase: "Phase 2", title: "Growth", items: ["Institutional tranche (T2) open", "V-Gold Segregated Portfolio live", "Staking infrastructure deployed"], status: "active" },
+  { phase: "Phase 1", title: "Foundation", items: ["Token architecture & legal structure", "JORC/43-101 reserve certification", "Anchor tranche (T1) launch"], status: "complete" },
+  { phase: "Phase 2", title: "Growth", items: ["Institutional tranche (T2) open", "OROx1 Segregated Portfolio live", "Staking infrastructure deployed"], status: "active" },
   { phase: "Phase 3", title: "Expansion", items: ["Strategic (T3) & Accredited (T4) tranches", "Multi-mine portfolio diversification", "Secondary market listing"], status: "upcoming" },
   { phase: "Phase 4", title: "Scale", items: ["Public tranche (T5) launch", "Cross-chain bridge deployment", "Institutional API & custody integrations"], status: "upcoming" },
 ];

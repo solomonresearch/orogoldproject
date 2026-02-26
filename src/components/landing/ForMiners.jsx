@@ -26,7 +26,7 @@ export default function ForMiners() {
               points: [
                 "Gold-price exposure + staking yield (up to 15%)",
                 "5 tranches from $10K to $1M minimum",
-                "JORC-certified, legally segregated assets",
+                "JORC/43-101 certified, legally segregated assets",
                 "Transparent on-chain reserve attestation",
                 "No yield without staking — you choose",
               ],
@@ -38,10 +38,10 @@ export default function ForMiners() {
               title: "For Mining Operations",
               sub: "Unlock capital from proven reserves",
               points: [
-                "Monetize JORC/NI 43-101 certified reserves",
+                "Monetize JORC/43-101 certified reserves",
                 "Access forward gold sale agreements",
                 "Non-dilutive funding for capex and expansion",
-                "Global portfolio: Australia, South America, Africa",
+                "Global portfolio across Tier 1 jurisdictions",
                 "Structured leverage against gold and plant assets",
               ],
               cta: "PARTNER WITH US",

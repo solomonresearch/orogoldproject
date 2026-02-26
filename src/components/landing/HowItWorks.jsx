@@ -5,8 +5,8 @@ import SectionWrapper from "../shared/SectionWrapper.jsx";
 import useIsMobile from "../../hooks/useIsMobile.js";
 
 const steps = [
-  { icon: Coins, title: "Acquire OROx1", desc: "Purchase tokens during an open tranche. Each token represents 1 troy oz of JORC-certified Australian gold." },
-  { icon: Lock, title: "Stake into V-Gold", desc: "Lock your tokens into the V-Gold Segregated Portfolio. Choose duration (6–36 months) and risk profile for yields from 1.2% to 15%." },
+  { icon: Coins, title: "Acquire OROx1", desc: "Purchase tokens during an open tranche. Each token represents 1 troy oz of Tier I certified gold." },
+  { icon: Lock, title: "Stake into OROx1 SP", desc: "Lock your tokens into the OROx1 Segregated Portfolio. Choose duration (6–36 months) and risk profile for yields from 1.2% to 15%." },
   { icon: TrendingUp, title: "Earn Yield", desc: "Your staked tokens earn projected annual yield from gold production contracts, reserves, and structured leverage. No staking = no yield." },
 ];
 

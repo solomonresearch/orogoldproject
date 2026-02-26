@@ -47,11 +47,11 @@ export default function OpportunitySection() {
               <span style={{ fontSize: 13, fontWeight: 700, color: GREEN, letterSpacing: 1 }}>THE OROx1 SOLUTION</span>
             </div>
             {[
-              "1 token = 1 troy oz backed by JORC-certified reserves",
-              "Stake to earn up to 15% annual yield via V-Gold portfolio",
+              "1 token = 1 troy oz backed by Tier I certified reserves",
+              "Stake to earn up to 15% annual yield via OROx1 SP",
               "No yield without staking — you choose your participation",
               "Entry from $10,000 (Public tranche) to $1M (Anchor)",
-              "On-chain transparency with Cayman SP legal structure",
+              "On-chain transparency with Segregated Portfolio structure",
             ].map((item, i) => (
               <div key={i} style={{ display: "flex", gap: 10, marginBottom: 12 }}>
                 <CheckCircle size={13} color={GREEN} style={{ flexShrink: 0, marginTop: 3 }} />

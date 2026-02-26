@@ -12,11 +12,11 @@ export default function MetricsStrip() {
   const openTranches = tranches.filter(i => i.status === "Open").length;
 
   const kpis = [
-    { label: "Total Reserve", value: <CountUp end={10} suffix="M oz" decimals={0} />, icon: Layers, sub: "JORC 2012 Certified" },
+    { label: "Total Reserve", value: <CountUp end={10} suffix="M oz" decimals={0} />, icon: Layers, sub: "JORC/43-101 Certified" },
     { label: "Allocated", value: <><CountUp end={pctDeployed} suffix="%" decimals={1} /> committed</>, icon: Coins, sub: `${totalReserved.toLocaleString()} oz reserved` },
     { label: "Open Tranches", value: <><CountUp end={openTranches} decimals={0} /> of 5</>, icon: Package, sub: "T1 Anchor + T2 Institutional" },
-    { label: "Staking Vehicle", value: "V-Gold SP", icon: Briefcase, sub: "Cayman Segregated Portfolio" },
-    { label: "Max Annual Yield", value: <CountUp end={15} suffix="%" decimals={0} />, icon: TrendingUp, sub: "Via V-Gold staking" },
+    { label: "Staking Vehicle", value: "OROx1 SP", icon: Briefcase, sub: "Segregated Portfolio" },
+    { label: "Max Annual Yield", value: <CountUp end={15} suffix="%" decimals={0} />, icon: TrendingUp, sub: "Via OROx1 staking" },
   ];
 
   return (

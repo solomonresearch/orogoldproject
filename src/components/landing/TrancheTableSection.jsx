@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronRight, Info, MapPin, Gem, BarChart3, CheckCircle, Clock, DollarSign, ArrowUpRight } from "lucide-react";
+import { ChevronRight, Info, Globe, BarChart3, CheckCircle, Clock, DollarSign, ArrowUpRight } from "lucide-react";
 import { GOLD, GOLD_LIGHT, GOLD_DIM, DARK, MUTED, CARD_BG, BORDER, GREEN } from "../../constants/colors.js";
 import { tranches } from "../../constants/data.js";
 import StatusBadge from "../shared/StatusBadge.jsx";
@@ -25,7 +25,7 @@ export default function TrancheTableSection() {
             OROx1 Gold Reserve Tranches
           </h2>
           <p style={{ fontSize: 15, color: MUTED, maxWidth: 600, margin: "0 auto", lineHeight: 1.6 }}>
-            5 tranches · 10,000,000 total ounces · JORC 2012 · 1 ORO = 1 troy oz
+            5 tranches · 10,000,000 total ounces · JORC/43-101 · 1 ORO = 1 troy oz
           </p>
         </div>
 
@@ -53,7 +53,7 @@ export default function TrancheTableSection() {
                 {expandedRow === i && (
                   <div style={{ marginTop: 12, paddingTop: 12, borderTop: `1px solid ${BORDER}` }}>
                     <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8 }}>
-                      {[{ l: "Region", v: t.mineArea }, { l: "Type", v: t.mineType }, { l: "Grade", v: t.grade }, { l: "Cert", v: t.certification }, { l: "Vesting", v: t.vesting }, { l: "Min.", v: t.minInvest }].map((d, j) => (
+                      {[{ l: "Jurisdiction", v: t.jurisdiction }, { l: "Grade", v: t.grade }, { l: "Cert", v: t.certification }, { l: "Vesting", v: t.vesting }, { l: "Min.", v: t.minInvest }].map((d, j) => (
                         <div key={j}><span style={{ fontSize: 9, color: MUTED }}>{d.l}: </span><span style={{ fontSize: 11, fontWeight: 600, color: DARK }}>{d.v}</span></div>
                       ))}
                     </div>
@@ -84,8 +84,8 @@ export default function TrancheTableSection() {
                 </div>
                 {expandedRow === i && (
                   <div style={{ background: `${GOLD}05`, borderBottom: `1px solid ${BORDER}`, padding: "18px 20px" }}>
-                    <div style={{ display: "grid", gridTemplateColumns: "repeat(6, 1fr)", gap: 14, marginBottom: 16 }}>
-                      {[{ l: "Region", v: t.mineArea, i: MapPin }, { l: "Mine Type", v: t.mineType, i: Gem }, { l: "Grade", v: t.grade, i: BarChart3 }, { l: "Certification", v: t.certification, i: CheckCircle }, { l: "Vesting", v: t.vesting, i: Clock }, { l: "Min. Invest", v: t.minInvest, i: DollarSign }].map((d, j) => (
+                    <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 14, marginBottom: 16 }}>
+                      {[{ l: "Jurisdiction", v: t.jurisdiction, i: Globe }, { l: "Grade", v: t.grade, i: BarChart3 }, { l: "Certification", v: t.certification, i: CheckCircle }, { l: "Vesting", v: t.vesting, i: Clock }, { l: "Min. Invest", v: t.minInvest, i: DollarSign }].map((d, j) => (
                         <div key={j} style={{ background: "#fff", borderRadius: 8, padding: "10px 12px", border: `1px solid ${BORDER}` }}>
                           <div style={{ display: "flex", alignItems: "center", gap: 5, marginBottom: 4 }}><d.i size={12} color={GOLD} /><span style={{ fontSize: 9, color: MUTED, letterSpacing: 0.8, textTransform: "uppercase" }}>{d.l}</span></div>
                           <div style={{ fontSize: 13, fontWeight: 600, color: DARK }}>{d.v}</div>

@@ -39,7 +39,7 @@ export default function CTAFooter({ onNavigate }) {
         {/* Legal */}
         <div style={{ borderTop: `1px solid #2A2A28`, paddingTop: 24 }}>
           <div style={{ fontSize: 10, color: "#555", lineHeight: 1.8, marginBottom: 12 }}>
-            CONFIDENTIAL · FOR QUALIFIED INVESTORS ONLY · V-Gold Segregated Portfolio · Cayman Islands
+            CONFIDENTIAL · FOR QUALIFIED INVESTORS ONLY · OROx1 Segregated Portfolio
           </div>
           <div style={{ fontSize: 10, color: "#444", lineHeight: 1.8 }}>
             This material does not constitute an offer to sell or a solicitation of an offer to buy any securities. OROx1 tokens are offered only to qualified investors under applicable exemptions. Past performance is not indicative of future results. Projected yields are targets and are not guaranteed. Staking is required to earn yield — non-staked tokens earn zero returns.

@@ -6,13 +6,13 @@ import SectionWrapper from "../shared/SectionWrapper.jsx";
 import useIsMobile from "../../hooks/useIsMobile.js";
 
 const faqs = [
-  { q: "What is OROx1?", a: "OROx1 is a gold-backed digital asset where 1 token represents 1 troy ounce of JORC 2012-certified Australian gold. Tokens can be held for gold-price exposure or staked into the V-Gold Segregated Portfolio for yield." },
-  { q: "How does staking yield work?", a: "When you stake OROx1 into the V-Gold portfolio, your tokens earn projected annual yield ranging from 1.2% to 15% depending on your chosen lock-up duration (6–36 months) and risk profile (Conservative to Aggressive). Yield comes from gold production contracts, qualified reserves, and structured leverage. If you do not stake, you earn zero yield." },
-  { q: "What happens if I don't stake my tokens?", a: "Non-staked OROx1 tokens retain gold-price exposure and liquidity in your wallet, but earn absolutely zero yield. You must stake into the V-Gold portfolio to activate any returns." },
+  { q: "What is OROx1?", a: "OROx1 is a gold-backed digital asset where 1 token represents 1 troy ounce of gold. Tokens can be held for gold-price exposure or staked into the OROx1 Segregated Portfolio for yield." },
+  { q: "How does staking yield work?", a: "When you stake OROx1 into the OROx1 SP portfolio, your tokens earn projected annual yield ranging from 1.2% to 15% depending on your chosen lock-up duration (6–36 months) and risk profile (Conservative to Aggressive). Yield comes from gold production contracts, qualified reserves, and structured leverage. If you do not stake, you earn zero yield." },
+  { q: "What happens if I don't stake my tokens?", a: "Non-staked OROx1 tokens retain gold-price exposure and liquidity in your wallet, but earn absolutely zero yield. You must stake into the OROx1 SP portfolio to activate any returns." },
   { q: "What are the tranches?", a: "OROx1 is issued in 5 tranches (T1–T5) with different minimum investments ($10K–$1M), discounts (3–20%), and lock-up periods (3–18 months). Earlier tranches offer deeper discounts and longer lock-ups." },
-  { q: "What is the V-Gold Segregated Portfolio?", a: "V-Gold is a Cayman Islands-registered Segregated Portfolio (SP) that holds a diversified portfolio of physical gold (30–35%), production contracts (30–35%), qualified reserves (25–35%), liquid assets (15–20%), and structured leverage (up to 20%)." },
+  { q: "What is the OROx1 Segregated Portfolio?", a: "OROx1 SP is a Segregated Portfolio that holds a diversified pool of assets including physical gold (30–35%), production contracts (30–35%), qualified reserves (25–35%), liquid assets (15–20%), and structured leverage (up to 20%)." },
   { q: "Can I exit early?", a: "Yes, but early unstaking incurs a commission of 1–10% depending on your risk tier and remaining lock-up period. This protects long-term stakers and ensures portfolio stability." },
-  { q: "How is the gold verified?", a: "All underlying reserves are JORC 2012 and/or NI 43-101 certified. Physical gold is stored in LBMA-accredited vaults. Independent quarterly audits provide reserve attestation, with on-chain proof of reserves." },
+  { q: "How is the gold verified?", a: "All underlying reserves are JORC/43-101 certified. Physical gold is stored in accredited vaults in Tier 1 jurisdictions. Independent quarterly audits provide reserve attestation, with on-chain proof of reserves." },
   { q: "Who can invest?", a: "Eligibility varies by tranche: T1–T2 are for strategic and institutional investors, T3–T4 for mining entities and accredited/HNW individuals, and T5 for qualified public investors. All participants undergo KYC/AML verification." },
 ];
 

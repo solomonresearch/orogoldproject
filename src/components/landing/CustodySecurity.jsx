@@ -5,9 +5,9 @@ import SectionWrapper from "../shared/SectionWrapper.jsx";
 import useIsMobile from "../../hooks/useIsMobile.js";
 
 const cards = [
-  { icon: Shield, title: "JORC 2012 Certification", desc: "All underlying gold reserves are certified to JORC 2012 international reporting standards, providing institutional-grade assurance of resource quality and quantity." },
-  { icon: Lock, title: "Segregated Portfolio", desc: "V-Gold operates as a Cayman Islands Segregated Portfolio, providing legal ring-fencing of assets. Each investor's position is isolated from other portfolio risks." },
-  { icon: Globe, title: "Multi-Jurisdiction Custody", desc: "Physical gold is stored across LBMA-accredited vaults in Australia and Switzerland. Digital assets secured via institutional-grade multi-sig custody." },
+  { icon: Shield, title: "JORC/43-101 Certification", desc: "All underlying gold reserves are certified to JORC/43-101 international reporting standards, providing institutional-grade assurance of resource quality and quantity." },
+  { icon: Lock, title: "Segregated Portfolio", desc: "OROx1 SP operates as a Segregated Portfolio, providing legal ring-fencing of assets. Each investor's position is isolated from other portfolio risks." },
+  { icon: Globe, title: "Multi-Jurisdiction Custody", desc: "Physical gold is stored across accredited vaults in Tier 1 jurisdictions. Digital assets secured via institutional-grade multi-sig custody." },
   { icon: CheckCircle, title: "Independent Audit", desc: "Quarterly reserve attestations by independent auditors. On-chain proof of reserves published to ensure transparent, verifiable gold backing at all times." },
 ];
 

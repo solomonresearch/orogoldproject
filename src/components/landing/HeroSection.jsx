@@ -24,7 +24,7 @@ export default function HeroSection({ onNavigate }) {
           style={{ display: "inline-flex", alignItems: "center", gap: 8, background: `${GOLD}15`, border: `1px solid ${GOLD}30`, borderRadius: 24, padding: "6px 18px", marginBottom: 32 }}
         >
           <div style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ADE80" }} />
-          <span style={{ fontSize: 11, color: GOLD, fontWeight: 600, letterSpacing: 1.5 }}>LIVE · AUSTRALIAN GOLD-BACKED DIGITAL ASSET</span>
+          <span style={{ fontSize: 11, color: GOLD, fontWeight: 600, letterSpacing: 1.5 }}>LIVE · GOLD-BACKED DIGITAL ASSET</span>
         </motion.div>
 
         {/* Wordmark */}
@@ -45,7 +45,7 @@ export default function HeroSection({ onNavigate }) {
           transition={{ delay: 0.6, duration: 0.6 }}
           style={{ fontSize: isMobile ? 18 : 24, color: "#B0B0A8", fontWeight: 300, lineHeight: 1.5, margin: "24px auto 8px", maxWidth: 700, fontFamily: "Georgia, serif" }}
         >
-          1 Token = 1 Troy Ounce of Australian Gold
+          1 Token = 1 Troy Ounce of Tier 1 Jurisdiction Gold
         </motion.p>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -53,7 +53,7 @@ export default function HeroSection({ onNavigate }) {
           transition={{ delay: 0.7, duration: 0.6 }}
           style={{ fontSize: isMobile ? 14 : 16, color: MUTED, lineHeight: 1.6, margin: "0 auto 40px", maxWidth: 600 }}
         >
-          10,000,000 oz JORC-certified reserve. Stake into the V-Gold Segregated Portfolio for up to 15% annual yield. No staking = no yield.
+          10,000,000 oz Tier I certified reserve. Stake into the OROx1 Segregated Portfolio for up to 15% annual yield. No staking = no yield.
         </motion.p>
 
         {/* CTAs */}
@@ -87,9 +87,9 @@ export default function HeroSection({ onNavigate }) {
           style={{ display: "flex", gap: isMobile ? 16 : 32, justifyContent: "center", flexWrap: "wrap" }}
         >
           {[
-            { icon: Shield, text: "JORC 2012 Certified" },
-            { icon: Globe, text: "Australian Jurisdiction" },
-            { icon: CheckCircle, text: "Cayman SP Structure" },
+            { icon: Shield, text: "JORC/43-101 Certified" },
+            { icon: Globe, text: "Tier 1 Jurisdiction" },
+            { icon: CheckCircle, text: "Segregated Portfolio" },
           ].map((badge, i) => (
             <div key={i} style={{ display: "flex", alignItems: "center", gap: 6 }}>
               <badge.icon size={14} color={GOLD} strokeWidth={1.5} />
