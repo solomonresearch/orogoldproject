@@ -1,145 +1,15 @@
 import { useState } from "react";
 import { Shield, TrendingUp, Lock, Unlock, Globe, MapPin, Coins, ChevronRight, ChevronDown, Info, Clock, AlertTriangle, CheckCircle, ArrowUpRight, Layers, BarChart3, Gem, Wallet, Zap, DollarSign, Package, Briefcase } from "lucide-react";
 
-const GOLD = "#9E7C2B";
-const GOLD_LIGHT = "#B8942F";
-const GOLD_DIM = "#C4AA5A";
-const DARK = "#1A1A1A";
-const MUTED = "#7A7A7A";
-const CARD_BG = "#F5F5F3";
-const BORDER = "#D8D8D5";
-const GREEN = "#1E7A4B";
-const RED = "#B85042";
-const BG = "#FAFAF8";
+import { GOLD, GOLD_LIGHT, GOLD_DIM, DARK, MUTED, CARD_BG, BORDER, GREEN, RED, BG } from "./constants/colors.js";
+import { tranches, timeSteps, riskLabels, riskColors, yieldMatrix, earlyExitFees, portfolioAllocations, strategyDescriptions } from "./constants/data.js";
+import StatusBadge from "./components/shared/StatusBadge.jsx";
+import AllocationBar from "./components/shared/AllocationBar.jsx";
+import Tip from "./components/shared/Tip.jsx";
+import PortfolioBar from "./components/shared/PortfolioBar.jsx";
+import StepSlider from "./components/shared/StepSlider.jsx";
 
-const tranches = [
-  { id: "OROx1-T1", name: "OROx1 — Anchor", status: "Open", totalOz: 2000000, reserved: 1460000, allocLeft: 27, pricePerToken: "$2,150", discount: "15–20%", lockup: "18 months", minInvest: "$1,000,000", investors: "Strategic Anchor", vesting: "25% TGE, qtly/12mo", mineArea: "Western Australia", mineType: "Open Pit", grade: "4.6 g/t", certification: "JORC 2012" },
-  { id: "OROx1-T2", name: "OROx1 — Institutional", status: "Open", totalOz: 2500000, reserved: 875000, allocLeft: 65, pricePerToken: "$2,185", discount: "10–12%", lockup: "12 months", minInvest: "$500,000", investors: "Qualified Institutional", vesting: "25% TGE, qtly/9mo", mineArea: "Western Australia", mineType: "Open Pit", grade: "4.6 g/t", certification: "JORC 2012" },
-  { id: "OROx1-T3", name: "OROx1 — Strategic", status: "Coming Soon", totalOz: 2000000, reserved: 0, allocLeft: 100, pricePerToken: "$2,210", discount: "8–10%", lockup: "12 months", minInvest: "$250,000", investors: "Mining & Commodity", vesting: "33% TGE, qtly/6mo", mineArea: "South Australia", mineType: "Underground", grade: "5.1 g/t", certification: "JORC 2012" },
-  { id: "OROx1-T4", name: "OROx1 — Accredited", status: "Pipeline", totalOz: 2000000, reserved: 0, allocLeft: 100, pricePerToken: "$2,235", discount: "5–7%", lockup: "6 months", minInvest: "$50,000", investors: "HNW / Accredited", vesting: "50% TGE, mthly/6mo", mineArea: "Queensland", mineType: "Open Pit", grade: "3.9 g/t", certification: "JORC 2012" },
-  { id: "OROx1-T5", name: "OROx1 — Public", status: "Pipeline", totalOz: 1500000, reserved: 0, allocLeft: 100, pricePerToken: "$2,250", discount: "3–5%", lockup: "3 months", minInvest: "$10,000", investors: "Qualified Public", vesting: "75% TGE, bal. 3mo", mineArea: "Victoria", mineType: "Underground", grade: "4.2 g/t", certification: "JORC 2012" },
-];
-
-const timeSteps = [6, 12, 18, 24, 30, 36];
-const riskLabels = ["Conservative", "Moderate", "Balanced", "Growth", "Aggressive"];
-const riskColors = [GREEN, "#2E8B57", GOLD, "#C97B2B", RED];
-
-const yieldMatrix = [
-  [15.0, 15.5, 16.0, 16.5, 17.0, 17.5],
-  [15.5, 16.5, 17.5, 18.5, 19.0, 20.0],
-  [16.0, 17.5, 19.0, 20.5, 21.5, 22.5],
-  [17.0, 19.0, 21.0, 23.0, 24.5, 26.0],
-  [18.0, 21.0, 24.0, 27.0, 29.0, 31.0],
-];
-
-const earlyExitFees = ["1–2%", "2–3%", "3–5%", "5–8%", "7–10%"];
-
-const portfolioAllocations = [
-  { physicalGold: 35, productionContracts: 30, qualifiedReserves: 25, liquidity: 20, leverage: 0 },
-  { physicalGold: 33, productionContracts: 32, qualifiedReserves: 27, liquidity: 18, leverage: 10 },
-  { physicalGold: 30, productionContracts: 33, qualifiedReserves: 30, liquidity: 17, leverage: 15 },
-  { physicalGold: 30, productionContracts: 35, qualifiedReserves: 33, liquidity: 15, leverage: 18 },
-  { physicalGold: 30, productionContracts: 35, qualifiedReserves: 35, liquidity: 15, leverage: 20 },
-];
-
-const strategyDescriptions = [
-  "Defensive allocation with maximum physical gold weighting and no leverage. The portfolio holds 35% in LBMA-quality physical bullion and OROx tokens in vaulted custody, 30% in secured production contracts (doré and refined gold purchased at $750–$2,000/oz on contracts up to 15yrs), 25% in NI 43-101/JORC qualified reserves, and a 20% USD/USDC liquidity buffer for mine capex funding via forward gold sales. No third-party debt leverage.",
-  "Core V-Gold allocation with modest 10% leverage introduced against secured gold and plant/machinery. Physical gold at 33%, production contracts at 32% providing discounted forward pricing, qualified reserves at 27%, and 18% liquidity buffer. Leverage enhances yield while maintaining strong collateral coverage.",
-  "Balanced V-Gold portfolio at target weights: 30% physical/digital LBMA gold, 33% secured production contracts across global mines at $750–$2,000/oz, 30% qualified reserves (NI 43-101/JORC), 17% liquidity buffer for capex funding, and 15% structured leverage against gold, plant, machinery, or equity.",
-  "Growth-oriented allocation maximizing production contract exposure at 35% to capture the full spread between contracted purchase prices ($750–$2,000/oz) and spot. Qualified reserves at 33%, physical gold floor at 30%, 15% liquidity, and 18% structured third-party debt leverage when available.",
-  "Maximum yield configuration: full leverage at 20% of portfolio via structured third-party debt secured against gold, plant, machinery, and equity. Production contracts at 35%, qualified reserves at 35%, physical gold at 30%, and 15% liquid assets. Highest return potential with proportionally higher exposure to leverage and reserve-stage assets.",
-];
-
-function StatusBadge({ status }) {
-  const m = { "Open": { bg: "#E8F5E9", color: GREEN, icon: CheckCircle }, "Coming Soon": { bg: "#FFF8E1", color: GOLD, icon: Clock }, "Pipeline": { bg: "#F5F5F3", color: MUTED, icon: Clock } };
-  const s = m[status] || m["Pipeline"];
-  return (<span style={{ background: s.bg, color: s.color, fontSize: 10, fontWeight: 600, padding: "3px 10px", borderRadius: 20, display: "inline-flex", alignItems: "center", gap: 4, whiteSpace: "nowrap" }}><s.icon size={11} /> {status}</span>);
-}
-
-function AllocationBar({ pct }) {
-  const f = 100 - pct;
-  return (<div style={{ width: "100%", display: "flex", alignItems: "center", gap: 6 }}><div style={{ flex: 1, height: 7, background: "#E8E8E6", borderRadius: 4, overflow: "hidden" }}><div style={{ width: `${f}%`, height: "100%", background: f > 80 ? RED : f > 50 ? GOLD : GREEN, borderRadius: 4, transition: "width 0.6s" }} /></div><span style={{ fontSize: 11, fontWeight: 700, color: pct < 30 ? RED : DARK, minWidth: 34, textAlign: "right" }}>{pct}%</span></div>);
-}
-
-function Tip({ children, text }) {
-  const [s, set] = useState(false);
-  return (<span style={{ position: "relative", display: "inline-flex", alignItems: "center" }} onMouseEnter={() => set(true)} onMouseLeave={() => set(false)}>{children}{s && <span style={{ position: "absolute", bottom: "calc(100% + 8px)", left: "50%", transform: "translateX(-50%)", background: DARK, color: "#fff", fontSize: 11, padding: "8px 14px", borderRadius: 6, zIndex: 50, boxShadow: "0 4px 16px rgba(0,0,0,0.18)", lineHeight: 1.5, maxWidth: 300, textAlign: "center" }}>{text}<span style={{ position: "absolute", top: "100%", left: "50%", transform: "translateX(-50%)", borderLeft: "5px solid transparent", borderRight: "5px solid transparent", borderTop: `5px solid ${DARK}` }} /></span>}</span>);
-}
-
-function PortfolioBar({ alloc, riskIdx }) {
-  const segments = [
-    { key: "physicalGold", label: "Physical & Digital Gold (LBMA)", color: GOLD, sub: "Bullion vaults + OROx tokens" },
-    { key: "productionContracts", label: "Secured Production Contracts", color: "#2E8B57", sub: "Doré & refined gold · $750–$2,000/oz · up to 15yrs" },
-    { key: "qualifiedReserves", label: "Qualified Reserves", color: "#5B6ABF", sub: "NI 43-101 & JORC certified" },
-    { key: "liquidity", label: "Liquid Assets (USD / USDC)", color: "#4A90D9", sub: "Liquidity buffer + mine capex funding" },
-    { key: "leverage", label: "3rd Party Debt Leverage", color: "#8B5E3C", sub: "Secured against gold, plant, machinery, equity" },
-  ];
-  const active = segments.filter(s => alloc[s.key] > 0);
-  const total = active.reduce((a, s) => a + alloc[s.key], 0);
-
-  return (
-    <div>
-      <div style={{ display: "flex", height: 12, borderRadius: 6, overflow: "hidden", marginBottom: 10 }}>
-        {active.map(s => (
-          <Tip key={s.key} text={`${s.label}: ${alloc[s.key]}% — ${s.sub}`}>
-            <div style={{ width: `${(alloc[s.key] / total) * 100}%`, height: "100%", background: s.color, transition: "width 0.4s ease", cursor: "help", minWidth: 4 }} />
-          </Tip>
-        ))}
-      </div>
-      <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-        {active.map(s => (
-          <div key={s.key} style={{ display: "flex", alignItems: "center", gap: 4 }}>
-            <div style={{ width: 8, height: 8, borderRadius: 2, background: s.color }} />
-            <span style={{ fontSize: 9.5, color: MUTED }}>{s.label.split("(")[0].trim()}</span>
-            <span style={{ fontSize: 9.5, fontWeight: 700, color: DARK }}>{alloc[s.key]}%</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function StepSlider({ idx, count, onChange, stepLabels, color, title, icon: Icon, displayValue }) {
-  return (
-    <div>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-          <Icon size={14} color={GOLD} />
-          <span style={{ fontSize: 11, fontWeight: 700, color: DARK, letterSpacing: 0.8, textTransform: "uppercase" }}>{title}</span>
-        </div>
-        <span style={{ fontSize: 15, fontWeight: 700, color, fontFamily: "Georgia, serif", transition: "color 0.2s" }}>{displayValue}</span>
-      </div>
-      <div style={{ position: "relative", height: 48, userSelect: "none" }}>
-        <div style={{ position: "absolute", top: 14, left: 12, right: 12, height: 6, background: "#E8E8E6", borderRadius: 3 }} />
-        <div style={{ position: "absolute", top: 14, left: 12, width: `${(idx / (count - 1)) * (100 - 2.4)}%`, height: 6, background: color, borderRadius: 3, transition: "width 0.25s ease", pointerEvents: "none" }} />
-        {stepLabels.map((label, i) => {
-          const left = count === 1 ? 50 : 12 + ((i / (count - 1)) * (100 - 2.4));
-          const active = i <= idx;
-          const current = i === idx;
-          return (
-            <div key={i} onClick={() => onChange(i)}
-              style={{ position: "absolute", left: `${left}%`, top: 0, transform: "translateX(-50%)", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", zIndex: current ? 3 : 1 }}>
-              <div style={{
-                width: current ? 24 : 14, height: current ? 24 : 14, borderRadius: "50%",
-                background: current ? color : active ? color : "#ddd",
-                border: current ? "3px solid #fff" : "none",
-                boxShadow: current ? `0 0 0 2.5px ${color}, 0 2px 10px rgba(0,0,0,0.18)` : active ? "0 1px 3px rgba(0,0,0,0.1)" : "none",
-                marginTop: current ? 6 : 10, transition: "all 0.25s ease",
-              }} />
-              <span style={{
-                fontSize: current ? 11 : 10, fontWeight: current ? 700 : 500,
-                color: current ? color : active ? DARK : MUTED,
-                marginTop: 5, transition: "all 0.2s", whiteSpace: "nowrap",
-              }}>{label}</span>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-export default function ORODashboard() {
+export default function ORODashboard({ onNavigate }) {
   const [tab, setTab] = useState("staking");
   const [hoveredRow, setHoveredRow] = useState(null);
   const [expandedRow, setExpandedRow] = useState(null);
@@ -179,6 +49,11 @@ export default function ORODashboard() {
             </div>
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            {onNavigate && (
+              <button onClick={() => onNavigate("landing")} style={{ background: "none", border: `1px solid ${BORDER}`, borderRadius: 6, padding: "5px 12px", fontSize: 11, fontWeight: 600, color: MUTED, cursor: "pointer" }}>
+                Back to Home
+              </button>
+            )}
             <div style={{ display: "flex", alignItems: "center", gap: 5, background: "#E8F5E9", borderRadius: 6, padding: "5px 12px" }}>
               <div style={{ width: 6, height: 6, borderRadius: "50%", background: GREEN }} /><span style={{ fontSize: 11, fontWeight: 600, color: GREEN }}>Live</span>
             </div>
@@ -234,7 +109,7 @@ export default function ORODashboard() {
                   <div style={{ fontSize: 15, fontWeight: 700, color: DARK }}>OROx1 — Australian Gold Reserve Tranches</div>
                   <div style={{ fontSize: 12, color: MUTED, marginTop: 2 }}>5 tranches · 10,000,000 total ounces · JORC 2012 · 1 ORO = 1 troy oz</div>
                 </div>
-                <Tip text="Each OROx1 token = 1 troy oz. Stake into the V-Gold Segregated Portfolio (Cayman) for 15%+ annual yield."><Info size={16} color={MUTED} style={{ cursor: "help" }} /></Tip>
+                <Tip text="Each OROx1 token = 1 troy oz. Stake into the V-Gold Segregated Portfolio (Cayman) for up to 15% annual yield. No staking = no yield."><Info size={16} color={MUTED} style={{ cursor: "help" }} /></Tip>
               </div>
               <div style={{ background: "#fff", borderRadius: 10, border: `1px solid ${BORDER}`, overflow: "hidden" }}>
                 <div style={{ display: "grid", gridTemplateColumns: "0.35fr 1.3fr 0.7fr 0.85fr 0.7fr 0.65fr 0.7fr 1.1fr 0.55fr", padding: "12px 16px", background: GOLD, gap: 6 }}>
@@ -287,7 +162,7 @@ export default function ORODashboard() {
                     <Info size={14} color={MUTED} style={{ cursor: "help" }} />
                   </Tip>
                 </div>
-                <div style={{ fontSize: 12, color: MUTED, marginTop: 2 }}>Cayman Segregated Portfolio · Min. 15% annual yield · Adjust duration and risk below</div>
+                <div style={{ fontSize: 12, color: MUTED, marginTop: 2 }}>Cayman Segregated Portfolio · Up to 15% annual yield · Adjust duration and risk below</div>
               </div>
 
               {/* V-Gold portfolio summary banner */}
@@ -317,7 +192,7 @@ export default function ORODashboard() {
               <div style={{ background: "#FFF8E1", border: `1px solid ${GOLD_DIM}40`, borderRadius: 8, padding: "10px 16px", display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 22 }}>
                 <AlertTriangle size={16} color={GOLD} style={{ flexShrink: 0, marginTop: 1 }} />
                 <span style={{ fontSize: 12, color: DARK, lineHeight: 1.5 }}>
-                  <strong>Early unstaking</strong> incurs a 1–10% commission depending on risk tier and remaining lock-up. Non-staked tokens earn <strong>zero yield</strong>. Minimum annual yield target: <strong>15%</strong>.
+                  <strong>Early unstaking</strong> incurs a 1–10% commission depending on risk tier and remaining lock-up. Non-staked tokens earn <strong>zero yield</strong>. Annual yield: <strong>1.2%–15%</strong> depending on duration and risk profile. Non-staked tokens earn <strong>zero yield</strong>.
                 </span>
               </div>
 
@@ -417,7 +292,7 @@ export default function ORODashboard() {
                   <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                     <BarChart3 size={16} color={GOLD} />
                     <span style={{ fontSize: 13, fontWeight: 700, color: DARK }}>Full Yield Matrix</span>
-                    <span style={{ fontSize: 11, color: MUTED }}>— All duration × risk combinations (min. 15%)</span>
+                    <span style={{ fontSize: 11, color: MUTED }}>— All duration × risk combinations (1.2%–15%)</span>
                   </div>
                   <ChevronDown size={18} color={MUTED} style={{ transform: showMatrix ? "rotate(180deg)" : "none", transition: "transform 0.2s" }} />
                 </button>
@@ -467,7 +342,7 @@ export default function ORODashboard() {
                       </tbody>
                     </table>
                     <div style={{ marginTop: 10, fontSize: 11, color: MUTED, fontStyle: "italic" }}>
-                      Click any cell to update your configuration. Highlighted = current selection. All yields ≥ 15% annual minimum.
+                      Click any cell to update your configuration. Highlighted = current selection. Yields range from 1.2% to 15%. Non-staked tokens earn zero yield.
                     </div>
                   </div>
                 )}

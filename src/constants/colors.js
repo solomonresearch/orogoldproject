@@ -1,0 +1,10 @@
+export const GOLD = "#9E7C2B";
+export const GOLD_LIGHT = "#B8942F";
+export const GOLD_DIM = "#C4AA5A";
+export const DARK = "#1A1A1A";
+export const MUTED = "#7A7A7A";
+export const CARD_BG = "#F5F5F3";
+export const BORDER = "#D8D8D5";
+export const GREEN = "#1E7A4B";
+export const RED = "#B85042";
+export const BG = "#FAFAF8";
