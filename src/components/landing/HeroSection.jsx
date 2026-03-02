@@ -45,7 +45,7 @@ export default function HeroSection({ onNavigate }) {
           transition={{ delay: 0.6, duration: 0.6 }}
           style={{ fontSize: isMobile ? 18 : 24, color: "#B0B0A8", fontWeight: 300, lineHeight: 1.5, margin: "24px auto 8px", maxWidth: 700, fontFamily: "Georgia, serif" }}
         >
-          1 Token = 1 Troy Ounce of Tier 1 Jurisdiction Gold
+          Invest in Gold with Confidence, Ease and Liquidity
         </motion.p>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -53,7 +53,7 @@ export default function HeroSection({ onNavigate }) {
           transition={{ delay: 0.7, duration: 0.6 }}
           style={{ fontSize: isMobile ? 14 : 16, color: MUTED, lineHeight: 1.6, margin: "0 auto 40px", maxWidth: 600 }}
         >
-          10,000,000 oz Tier I certified reserve. Stake into the OROx1 Segregated Portfolio for up to 15% annual yield. No staking = no yield.
+          With 1 token = 1 troy oz of investment backed by certified reserves, gold investment has changed. Take advantage of flexible and secure on-chain ownership.
         </motion.p>
 
         {/* CTAs */}

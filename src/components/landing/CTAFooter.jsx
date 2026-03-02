@@ -19,7 +19,7 @@ export default function CTAFooter({ onNavigate }) {
           Ready to Invest in Gold-Backed Digital Assets?
         </h2>
         <p style={{ fontSize: 15, color: "#8A8A82", lineHeight: 1.6, marginBottom: 32 }}>
-          Explore the dashboard to view live tranche data, configure staking parameters, and model your projected yield. No staking, no yield — your returns start when you stake.
+          Explore the dashboard to view live tranche data, configure your staking parameters, and model your projected yield. No staking, no yield — your returns start when you stake.
         </p>
 
         <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap", marginBottom: 48 }}>

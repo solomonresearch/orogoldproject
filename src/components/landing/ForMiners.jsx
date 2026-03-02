@@ -21,7 +21,7 @@ export default function ForMiners() {
           {[
             {
               icon: Briefcase,
-              title: "For Investors",
+              title: "If you're an investor\u2026",
               sub: "Access institutional gold-backed digital assets",
               points: [
                 "Gold-price exposure + staking yield (up to 15%)",
@@ -35,10 +35,10 @@ export default function ForMiners() {
             },
             {
               icon: Gem,
-              title: "For Mining Operations",
+              title: "If you're a miner\u2026",
               sub: "Unlock capital from proven reserves",
               points: [
-                "Monetize JORC/43-101 certified reserves",
+                "Monetise JORC/43-101 certified reserves",
                 "Access forward gold sale agreements",
                 "Non-dilutive funding for capex and expansion",
                 "Global portfolio across Tier 1 jurisdictions",

@@ -26,7 +26,7 @@ export default function PortfolioComposition() {
             Diversified Gold-Backed Portfolio
           </h2>
           <p style={{ fontSize: 15, color: MUTED, maxWidth: 600, margin: "0 auto", lineHeight: 1.6 }}>
-            The OROx1 Segregated Portfolio holds a globally balanced pool of assets including physical gold, production contracts, and reserves.
+            Your staked tokens are deployed into a globally diversified pool of assets including physical gold, production contracts, and qualified reserves.
           </p>
         </div>
 

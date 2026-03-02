@@ -19,7 +19,7 @@ export default function HowItWorks() {
         <div style={{ textAlign: "center", marginBottom: 48 }}>
           <span style={{ fontSize: 10, color: GOLD, fontWeight: 700, letterSpacing: 2 }}>HOW IT WORKS</span>
           <h2 style={{ fontSize: isMobile ? 28 : 36, fontWeight: 700, color: DARK, fontFamily: "Georgia, serif", margin: "10px 0 0" }}>
-            Three Steps to Gold-Backed Yield
+            Start Earning Gold-Backed Yield in Three Steps
           </h2>
         </div>
 

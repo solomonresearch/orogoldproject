@@ -32,7 +32,7 @@ export default function StakingConfigurator() {
             Configure Your Yield
           </h2>
           <p style={{ fontSize: 15, color: MUTED, maxWidth: 600, margin: "0 auto", lineHeight: 1.6 }}>
-            Stake OROx1 into the OROx1 Segregated Portfolio. Adjust duration and risk to see projected returns. No staking = no yield.
+            Stake your OROx1 into the Segregated Portfolio. Adjust duration and risk to see your projected returns. No staking = no yield.
           </p>
         </div>
 

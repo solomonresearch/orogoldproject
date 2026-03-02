@@ -12,10 +12,10 @@ export default function OpportunitySection() {
         <div style={{ textAlign: "center", marginBottom: 48 }}>
           <span style={{ fontSize: 10, color: GOLD, fontWeight: 700, letterSpacing: 2 }}>THE OPPORTUNITY</span>
           <h2 style={{ fontSize: isMobile ? 28 : 36, fontWeight: 700, color: DARK, fontFamily: "Georgia, serif", margin: "10px 0 12px" }}>
-            Why Gold Needs a Digital Layer
+            Invest in Gold Without the Barriers
           </h2>
           <p style={{ fontSize: 15, color: MUTED, maxWidth: 600, margin: "0 auto", lineHeight: 1.6 }}>
-            Traditional gold investment is fragmented, illiquid, and locked behind high minimums. OROx1 solves this.
+            Traditional gold investment is fragmented, illiquid, and locked behind high minimums. With OROx1, you gain access to institutional-grade gold exposure on your terms.
           </p>
         </div>
 

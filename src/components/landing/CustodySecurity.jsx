@@ -23,7 +23,7 @@ export default function CustodySecurity() {
             Institutional-Grade Protection
           </h2>
           <p style={{ fontSize: 15, color: MUTED, maxWidth: 600, margin: "0 auto", lineHeight: 1.6 }}>
-            Multi-layered security across legal, physical, and digital infrastructure.
+            Rely on multi-layered security across legal, physical, and digital infrastructure.
           </p>
         </div>
 

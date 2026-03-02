@@ -25,7 +25,7 @@ export default function RegulatoryCompliance() {
             Compliance & Standards
           </h2>
           <p style={{ fontSize: 15, color: MUTED, maxWidth: 600, margin: "0 auto", lineHeight: 1.6 }}>
-            Built on internationally recognized certification and compliance frameworks.
+            Built on internationally recognised certification and compliance frameworks.
           </p>
         </div>
 
