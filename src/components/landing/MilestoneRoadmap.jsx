@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { GOLD, DARK, MUTED, GREEN, BORDER } from "../../constants/colors.js";
+import { GOLD, LIME, DARK, MUTED, GREEN, BORDER } from "../../constants/colors.js";
 import SectionWrapper from "../shared/SectionWrapper.jsx";
 import useIsMobile from "../../hooks/useIsMobile.js";
 
 const milestones = [
   { phase: "Phase 1", title: "Foundation", items: ["Token architecture & legal structure", "JORC/43-101 reserve certification", "Anchor tranche (T1) launch"], status: "complete" },
-  { phase: "Phase 2", title: "Growth", items: ["Institutional tranche (T2) open", "OROx1 Segregated Portfolio live", "Staking infrastructure deployed"], status: "active" },
+  { phase: "Phase 2", title: "Growth", items: ["Institutional tranche (T2) open", "VGOLD Segregated Portfolio live", "Staking infrastructure deployed"], status: "active" },
   { phase: "Phase 3", title: "Expansion", items: ["Strategic (T3) & Accredited (T4) tranches", "Multi-mine portfolio diversification", "Secondary market listing"], status: "upcoming" },
   { phase: "Phase 4", title: "Scale", items: ["Public tranche (T5) launch", "Cross-chain bridge deployment", "Institutional API & custody integrations"], status: "upcoming" },
 ];
@@ -46,7 +46,7 @@ export default function MilestoneRoadmap() {
                 style={{ padding: isMobile ? "0 0 24px" : "0 16px", textAlign: "center", position: "relative", zIndex: 1 }}
               >
                 {/* Dot */}
-                <div style={{ width: 40, height: 40, borderRadius: "50%", background: isActive ? `${GOLD}15` : "#fff", border: `3px solid ${dotColor}`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px", transition: "all 0.3s" }}>
+                <div style={{ width: 40, height: 40, borderRadius: "50%", background: isActive ? `${LIME}18` : "#fff", border: `3px solid ${dotColor}`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px", transition: "all 0.3s" }}>
                   <div style={{ width: 12, height: 12, borderRadius: "50%", background: dotColor }} />
                 </div>
 
@@ -63,8 +63,8 @@ export default function MilestoneRoadmap() {
                 </div>
 
                 {isActive && (
-                  <div style={{ marginTop: 10, display: "inline-flex", alignItems: "center", gap: 5, background: `${GOLD}12`, borderRadius: 12, padding: "3px 10px" }}>
-                    <div style={{ width: 5, height: 5, borderRadius: "50%", background: GOLD }} />
+                  <div style={{ marginTop: 10, display: "inline-flex", alignItems: "center", gap: 5, background: `${LIME}18`, borderRadius: 12, padding: "3px 10px" }}>
+                    <div style={{ width: 5, height: 5, borderRadius: "50%", background: LIME }} />
                     <span style={{ fontSize: 9, color: GOLD, fontWeight: 600 }}>IN PROGRESS</span>
                   </div>
                 )}

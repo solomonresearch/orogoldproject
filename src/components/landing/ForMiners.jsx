@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { Gem, Briefcase, ArrowUpRight } from "lucide-react";
-import { GOLD, GOLD_LIGHT, DARK, MUTED, BORDER } from "../../constants/colors.js";
+import { Briefcase, ArrowUpRight, Pickaxe } from "lucide-react";
+import { GOLD, GOLD_LIGHT, LIME, DARK, MUTED, BORDER } from "../../constants/colors.js";
 import SectionWrapper from "../shared/SectionWrapper.jsx";
 import useIsMobile from "../../hooks/useIsMobile.js";
 
@@ -8,7 +8,7 @@ export default function ForMiners() {
   const isMobile = useIsMobile();
 
   return (
-    <SectionWrapper id="for-miners" style={{ padding: isMobile ? "60px 20px" : "80px 40px", background: "#FAFAF8" }}>
+    <SectionWrapper id="for-miners" style={{ padding: isMobile ? "60px 20px" : "80px 40px", background: "#FAFAF5" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 48 }}>
           <span style={{ fontSize: 10, color: GOLD, fontWeight: 700, letterSpacing: 2 }}>DUAL AUDIENCE</span>
@@ -21,7 +21,7 @@ export default function ForMiners() {
           {[
             {
               icon: Briefcase,
-              title: "If you're an investor\u2026",
+              title: "If you\u2019re an investor\u2026",
               sub: "Access institutional gold-backed digital assets",
               points: [
                 "Gold-price exposure + staking yield (up to 15%)",
@@ -34,8 +34,8 @@ export default function ForMiners() {
               href: "#tranches",
             },
             {
-              icon: Gem,
-              title: "If you're a miner\u2026",
+              icon: Pickaxe,
+              title: "If you\u2019re a miner\u2026",
               sub: "Unlock capital from proven reserves",
               points: [
                 "Monetise JORC/43-101 certified reserves",
@@ -57,7 +57,7 @@ export default function ForMiners() {
               style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 14, padding: 28 }}
             >
               <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 6 }}>
-                <div style={{ background: `${GOLD}12`, borderRadius: 8, padding: 8, display: "flex" }}>
+                <div style={{ background: `${LIME}18`, borderRadius: 8, padding: 8, display: "flex" }}>
                   <col.icon size={20} color={GOLD} />
                 </div>
                 <h3 style={{ fontSize: 18, fontWeight: 700, color: DARK, margin: 0 }}>{col.title}</h3>

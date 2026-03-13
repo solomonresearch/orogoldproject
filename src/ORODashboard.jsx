@@ -1,13 +1,14 @@
 import { useState } from "react";
-import { Shield, TrendingUp, Lock, Unlock, Globe, Coins, ChevronRight, ChevronDown, Info, Clock, AlertTriangle, CheckCircle, ArrowUpRight, Layers, BarChart3, Gem, Wallet, Zap, DollarSign, Package, Briefcase, ExternalLink, FileText } from "lucide-react";
+import { Shield, TrendingUp, Lock, Unlock, Globe, Coins, ChevronRight, ChevronDown, Info, Clock, AlertTriangle, CheckCircle, ArrowUpRight, Layers, BarChart3, Wallet, Zap, DollarSign, Package, Briefcase, ExternalLink, FileText } from "lucide-react";
 
-import { GOLD, GOLD_LIGHT, GOLD_DIM, DARK, MUTED, CARD_BG, BORDER, GREEN, RED, BG } from "./constants/colors.js";
+import { GOLD, GOLD_LIGHT, GOLD_DIM, LIME, DARK, MUTED, CARD_BG, BORDER, GREEN, RED, BG } from "./constants/colors.js";
 import { tranches, timeSteps, riskLabels, riskColors, yieldMatrix, earlyExitFees, portfolioAllocations, strategyDescriptions } from "./constants/data.js";
 import StatusBadge from "./components/shared/StatusBadge.jsx";
 import AllocationBar from "./components/shared/AllocationBar.jsx";
 import Tip from "./components/shared/Tip.jsx";
 import PortfolioBar from "./components/shared/PortfolioBar.jsx";
 import StepSlider from "./components/shared/StepSlider.jsx";
+import VGoldMark from "./components/shared/VGoldMark.jsx";
 
 export default function ORODashboard({ onNavigate }) {
   const [tab, setTab] = useState("staking");
@@ -34,16 +35,15 @@ export default function ORODashboard({ onNavigate }) {
   const estEarnings = amt > 0 ? (amt * (currentYield / 100) * (currentTime / 12)).toFixed(2) : null;
 
   return (
-    <div style={{ fontFamily: "'Inter', -apple-system, sans-serif", background: BG, minHeight: "100vh", color: DARK }}>
+    <div style={{ fontFamily: "'Inter', -apple-system, sans-serif", background: "#fff", minHeight: "100vh", color: DARK }}>
       {/* HEADER */}
       <div style={{ background: "#fff", borderBottom: `3px solid ${GOLD}` }}>
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "14px 32px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-            <Gem size={28} color={GOLD} strokeWidth={1.5} />
+            <VGoldMark size={28} color={LIME} />
             <div>
               <div style={{ display: "flex", alignItems: "baseline", gap: 8 }}>
-                <span style={{ fontSize: 24, fontWeight: 700, color: GOLD, letterSpacing: 4, fontFamily: "Georgia, serif" }}>ORO</span>
-                <span style={{ fontSize: 13, fontWeight: 600, color: DARK, letterSpacing: 1 }}>x1</span>
+                <span style={{ fontSize: 24, fontWeight: 700, color: GOLD, letterSpacing: 4, fontFamily: "Georgia, serif" }}>VGold</span>
               </div>
               <div style={{ fontSize: 9, color: MUTED, letterSpacing: 2, marginTop: -2 }}>GOLD-BACKED DIGITAL ASSET · 10,000,000 oz</div>
             </div>
@@ -60,7 +60,7 @@ export default function ORODashboard({ onNavigate }) {
             >
               <FileText size={12} /> Data Room <ExternalLink size={10} />
             </a>
-            <div style={{ display: "flex", alignItems: "center", gap: 5, background: "#E8F5E9", borderRadius: 6, padding: "5px 12px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 5, background: `${GREEN}12`, borderRadius: 6, padding: "5px 12px" }}>
               <div style={{ width: 6, height: 6, borderRadius: "50%", background: GREEN }} /><span style={{ fontSize: 11, fontWeight: 600, color: GREEN }}>Live</span>
             </div>
             <div style={{ background: CARD_BG, borderRadius: 8, padding: "7px 14px", display: "flex", alignItems: "center", gap: 6 }}>
@@ -71,20 +71,30 @@ export default function ORODashboard({ onNavigate }) {
       </div>
 
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+        {/* DISCLAIMER BANNER */}
+        <div style={{ margin: "14px 32px 0", background: `${LIME}10`, border: `1px solid ${LIME}25`, borderRadius: 8, padding: "10px 16px", display: "flex", alignItems: "center", gap: 10 }}>
+          <Info size={14} color={GOLD} style={{ flexShrink: 0 }} />
+          <span style={{ fontSize: 11, color: MUTED, lineHeight: 1.5 }}>
+            <strong style={{ color: DARK }}>Disclaimer:</strong> All figures, yields, allocations, and projections displayed on this dashboard are for <strong style={{ color: DARK }}>informational purposes only</strong> and are subject to change and adjustments. They do not constitute financial advice or a guarantee of returns. Please refer to the{" "}
+            <a href="https://docsend.com" target="_blank" rel="noopener noreferrer" style={{ color: GOLD, fontWeight: 600, textDecoration: "underline" }}>Data Room</a>{" "}
+            for official documentation.
+          </span>
+        </div>
+
         {/* KPIs */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 14, padding: "18px 32px 0" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 14, padding: "14px 32px 0" }}>
           {[
             { label: "Total Reserve", value: "10,000,000 oz", icon: Layers, sub: "JORC/43-101 Certified" },
             { label: "Allocated", value: `${totalReserved.toLocaleString()} oz`, icon: Coins, sub: `${pctDeployed}% committed` },
             { label: "Open Tranches", value: `${openTranches} of 5`, icon: Package, sub: "T1 Anchor + T2 Institutional" },
-            { label: "Staking Vehicle", value: "OROx1 SP", icon: Briefcase, sub: "Segregated Portfolio" },
+            { label: "Staking Vehicle", value: "VGOLD SP", icon: Briefcase, sub: "Segregated Portfolio" },
             { label: "Gold Spot", value: "$2,185.40", icon: TrendingUp, sub: "+1.2% MTD" },
           ].map((kpi, i) => (
             <div key={i} style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 10, padding: "14px 16px", transition: "box-shadow 0.2s", cursor: "default" }}
               onMouseEnter={e => e.currentTarget.style.boxShadow = `0 2px 12px ${GOLD}15`}
               onMouseLeave={e => e.currentTarget.style.boxShadow = "none"}>
               <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}>
-                <div style={{ background: `${GOLD}12`, borderRadius: 6, padding: 6, display: "flex" }}><kpi.icon size={15} color={GOLD} strokeWidth={1.5} /></div>
+                <div style={{ background: `${LIME}18`, borderRadius: 6, padding: 6, display: "flex" }}><kpi.icon size={15} color={GOLD} strokeWidth={1.5} /></div>
                 <span style={{ fontSize: 9, color: MUTED, letterSpacing: 1, textTransform: "uppercase" }}>{kpi.label}</span>
               </div>
               <div style={{ fontSize: 18, fontWeight: 700, color: DARK, fontFamily: "Georgia, serif", marginBottom: 2 }}>{kpi.value}</div>
@@ -93,19 +103,9 @@ export default function ORODashboard({ onNavigate }) {
           ))}
         </div>
 
-        {/* DISCLAIMER */}
-        <div style={{ margin: "14px 32px 0", background: `${GOLD}08`, border: `1px solid ${GOLD}20`, borderRadius: 8, padding: "10px 16px", display: "flex", alignItems: "center", gap: 10 }}>
-          <Info size={14} color={GOLD} style={{ flexShrink: 0 }} />
-          <span style={{ fontSize: 11, color: MUTED, lineHeight: 1.5 }}>
-            <strong style={{ color: DARK }}>Disclaimer:</strong> All figures, yields, allocations, and projections displayed on this dashboard are for <strong style={{ color: DARK }}>illustrative and display purposes only</strong>. They do not constitute financial advice or a guarantee of returns. Please refer to the{" "}
-            <a href="https://docsend.com" target="_blank" rel="noopener noreferrer" style={{ color: GOLD, fontWeight: 600, textDecoration: "underline" }}>Data Room</a>{" "}
-            for official documentation.
-          </span>
-        </div>
-
         {/* TABS */}
         <div style={{ padding: "18px 32px 0", display: "flex", gap: 0, borderBottom: `1px solid ${BORDER}` }}>
-          {[{ id: "issuances", label: "OROx1 Tranches", icon: Globe }, { id: "staking", label: "OROx1 Staking", icon: Lock }].map(t => (
+          {[{ id: "issuances", label: "VGOLD Tranches", icon: Globe }, { id: "staking", label: "VGOLD Staking", icon: Lock }].map(t => (
             <button key={t.id} onClick={() => setTab(t.id)} style={{
               background: "none", border: "none", padding: "10px 24px", cursor: "pointer",
               fontSize: 13, fontWeight: tab === t.id ? 700 : 500, color: tab === t.id ? GOLD : MUTED,
@@ -122,10 +122,10 @@ export default function ORODashboard({ onNavigate }) {
             <div>
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
                 <div>
-                  <div style={{ fontSize: 15, fontWeight: 700, color: DARK }}>OROx1 — Tier 1 Jurisdiction Gold Reserve Tranches</div>
-                  <div style={{ fontSize: 12, color: MUTED, marginTop: 2 }}>5 tranches · 10,000,000 total ounces · JORC/43-101 · 1 ORO = 1 troy oz</div>
+                  <div style={{ fontSize: 15, fontWeight: 700, color: DARK }}>VGOLD — Tier 1 Jurisdiction Gold Reserve Tranches</div>
+                  <div style={{ fontSize: 12, color: MUTED, marginTop: 2 }}>5 tranches · 10,000,000 total ounces · JORC/43-101 · 1 VGOLD = 1 troy oz</div>
                 </div>
-                <Tip text="Each OROx1 token = 1 troy oz. Stake into the OROx1 Segregated Portfolio for up to 15% annual yield. No staking = no yield."><Info size={16} color={MUTED} style={{ cursor: "help" }} /></Tip>
+                <Tip text="Each VGOLD token = 1 troy oz. Stake into the VGOLD Segregated Portfolio for up to 15% annual yield. No staking = no yield."><Info size={16} color={MUTED} style={{ cursor: "help" }} /></Tip>
               </div>
               <div style={{ background: "#fff", borderRadius: 10, border: `1px solid ${BORDER}`, overflow: "hidden" }}>
                 <div style={{ display: "grid", gridTemplateColumns: "0.35fr 1.3fr 0.7fr 0.85fr 0.7fr 1.1fr 0.55fr", padding: "12px 16px", background: GOLD, gap: 6 }}>
@@ -160,34 +160,34 @@ export default function ORODashboard({ onNavigate }) {
                   </div>
                 ))}
                 <div style={{ display: "grid", gridTemplateColumns: "0.35fr 1.3fr 0.7fr 0.85fr 0.7fr 1.1fr 0.55fr", padding: "12px 16px", background: GOLD, gap: 6, alignItems: "center" }}>
-                  <div /><div style={{ fontSize: 12, fontWeight: 700, color: "#fff", letterSpacing: 1 }}>TOTAL OROx1</div><div /><div style={{ fontSize: 14, fontWeight: 700, color: "#fff", fontFamily: "Georgia, serif" }}>10.0M</div><div /><div style={{ fontSize: 11, fontWeight: 600, color: "#fff" }}>{pctDeployed}% committed</div><div />
+                  <div /><div style={{ fontSize: 12, fontWeight: 700, color: "#fff", letterSpacing: 1 }}>TOTAL VGOLD</div><div /><div style={{ fontSize: 14, fontWeight: 700, color: "#fff", fontFamily: "Georgia, serif" }}>10.0M</div><div /><div style={{ fontSize: 11, fontWeight: 600, color: "#fff" }}>{pctDeployed}% committed</div><div />
                 </div>
               </div>
             </div>
           )}
 
-          {/* V-GOLD STAKING */}
+          {/* VGOLD STAKING */}
           {tab === "staking" && (
             <div>
               <div style={{ marginBottom: 8 }}>
                 <div style={{ fontSize: 15, fontWeight: 700, color: DARK, display: "flex", alignItems: "center", gap: 8 }}>
-                  Stake into the OROx1 Portfolio
-                  <Tip text="OROx1 SP is a Segregated Portfolio holding a globally balanced and diverse pool of assets including physical gold, production contracts, qualified reserves, liquid assets, and structured leverage.">
+                  Stake into the VGOLD Portfolio
+                  <Tip text="VGOLD SP is a Segregated Portfolio holding a globally balanced and diverse pool of assets including physical gold, production contracts, qualified reserves, liquid assets, and structured leverage.">
                     <Info size={14} color={MUTED} style={{ cursor: "help" }} />
                   </Tip>
                 </div>
-                <div style={{ fontSize: 12, color: MUTED, marginTop: 2 }}>OROx1 Segregated Portfolio · Up to 15% annual yield · Adjust duration and risk below</div>
+                <div style={{ fontSize: 12, color: MUTED, marginTop: 2 }}>VGOLD Segregated Portfolio · Up to 15% annual yield · Adjust duration and risk below</div>
               </div>
 
-              {/* V-Gold portfolio summary banner */}
+              {/* VGOLD portfolio summary banner */}
               <div style={{ background: "#fff", border: `1px solid ${BORDER}`, borderRadius: 10, padding: "16px 20px", marginBottom: 16 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
                   <Briefcase size={16} color={GOLD} />
-                  <span style={{ fontSize: 12, fontWeight: 700, color: DARK, letterSpacing: 0.5 }}>OROx1 SP PORTFOLIO COMPOSITION</span>
+                  <span style={{ fontSize: 12, fontWeight: 700, color: DARK, letterSpacing: 0.5 }}>VGOLD SP PORTFOLIO COMPOSITION</span>
                 </div>
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 12 }}>
                   {[
-                    { pct: "30–35%", label: "Physical & Digital Gold", sub: "Bullion + OROx tokens", color: GOLD },
+                    { pct: "30–35%", label: "Physical & Digital Gold", sub: "Bullion + VGOLD tokens", color: GOLD },
                     { pct: "30–35%", label: "Production Contracts", sub: "$750–$2,000/oz · up to 15yr", color: "#2E8B57" },
                     { pct: "25–35%", label: "Qualified Reserves", sub: "JORC/43-101 certified", color: "#5B6ABF" },
                     { pct: "15–20%", label: "Liquid Assets", sub: "USD/USDC buffer + mine capex", color: "#4A90D9" },
@@ -203,10 +203,10 @@ export default function ORODashboard({ onNavigate }) {
               </div>
 
               {/* Warning */}
-              <div style={{ background: "#FFF8E1", border: `1px solid ${GOLD_DIM}40`, borderRadius: 8, padding: "10px 16px", display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 22 }}>
+              <div style={{ background: `${LIME}10`, border: `1px solid ${LIME}25`, borderRadius: 8, padding: "10px 16px", display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 22 }}>
                 <AlertTriangle size={16} color={GOLD} style={{ flexShrink: 0, marginTop: 1 }} />
                 <span style={{ fontSize: 12, color: DARK, lineHeight: 1.5 }}>
-                  <strong>Early unstaking</strong> incurs a 1–10% commission depending on risk tier and remaining lock-up. Non-staked tokens earn <strong>zero yield</strong>. Annual yield: <strong>1.2%–15%</strong> depending on duration and risk profile. Non-staked tokens earn <strong>zero yield</strong>.
+                  <strong>Early unstaking</strong> incurs a 1–10% commission depending on risk tier and remaining lock-up. Non-staked tokens earn <strong>zero yield</strong>. Annual yield: <strong>1.2%–15%</strong> depending on duration and risk profile.
                 </span>
               </div>
 
@@ -230,7 +230,7 @@ export default function ORODashboard({ onNavigate }) {
                         </div>
                         <div>
                           <div style={{ fontSize: 16, fontWeight: 700, color: DARK }}>{riskLabels[riskIdx]} · {currentTime} Months</div>
-                          <div style={{ fontSize: 11, color: MUTED }}>OROx1 Segregated Portfolio</div>
+                          <div style={{ fontSize: 11, color: MUTED }}>VGOLD Segregated Portfolio</div>
                         </div>
                       </div>
 
@@ -263,25 +263,25 @@ export default function ORODashboard({ onNavigate }) {
                     {/* Right */}
                     <div>
                       <div style={{ background: CARD_BG, borderRadius: 10, padding: "14px 16px", marginBottom: 16 }}>
-                        <div style={{ fontSize: 9, color: riskColor, fontWeight: 700, letterSpacing: 1.2, marginBottom: 8, transition: "color 0.3s" }}>OROx1 SP PORTFOLIO ALLOCATION</div>
+                        <div style={{ fontSize: 9, color: riskColor, fontWeight: 700, letterSpacing: 1.2, marginBottom: 8, transition: "color 0.3s" }}>VGOLD SP PORTFOLIO ALLOCATION</div>
                         <PortfolioBar alloc={alloc} riskIdx={riskIdx} />
                         <div style={{ marginTop: 12, fontSize: 11, color: MUTED, lineHeight: 1.6 }}>{strategy}</div>
                       </div>
 
                       <div style={{ marginBottom: 14 }}>
-                        <label style={{ fontSize: 10, color: MUTED, letterSpacing: 0.5, display: "block", marginBottom: 5 }}>STAKE AMOUNT (OROx1)</label>
+                        <label style={{ fontSize: 10, color: MUTED, letterSpacing: 0.5, display: "block", marginBottom: 5 }}>STAKE AMOUNT (VGOLD)</label>
                         <div style={{ display: "flex", border: `1px solid ${BORDER}`, borderRadius: 8, overflow: "hidden" }}>
                           <input type="text" value={stakeAmount} onChange={e => setStakeAmount(e.target.value)} placeholder="0.00"
                             style={{ flex: 1, border: "none", padding: "11px 14px", fontSize: 16, fontWeight: 600, fontFamily: "Georgia, serif", outline: "none", color: DARK, background: "transparent" }} />
                           <button onClick={() => setStakeAmount("1250")} style={{ background: CARD_BG, border: "none", borderLeft: `1px solid ${BORDER}`, padding: "0 14px", fontSize: 10, fontWeight: 700, color: GOLD, cursor: "pointer", letterSpacing: 1 }}>MAX</button>
                         </div>
-                        <div style={{ fontSize: 10, color: MUTED, marginTop: 5 }}>Available: 1,250.00 OROx1</div>
+                        <div style={{ fontSize: 10, color: MUTED, marginTop: 5 }}>Available: 1,250.00 VGOLD</div>
                       </div>
 
                       {estEarnings && (
                         <div style={{ background: `${riskColor}08`, borderRadius: 8, padding: "10px 14px", marginBottom: 14, display: "flex", justifyContent: "space-between", alignItems: "center", transition: "background 0.3s" }}>
                           <span style={{ fontSize: 11, color: MUTED }}>Est. earnings over {currentTime}mo</span>
-                          <span style={{ fontSize: 16, fontWeight: 700, color: riskColor, fontFamily: "Georgia, serif" }}>{estEarnings} ORO</span>
+                          <span style={{ fontSize: 16, fontWeight: 700, color: riskColor, fontFamily: "Georgia, serif" }}>{estEarnings} VGOLD</span>
                         </div>
                       )}
 
@@ -290,7 +290,7 @@ export default function ORODashboard({ onNavigate }) {
                         padding: "14px", fontSize: 12, fontWeight: 700, cursor: "pointer", letterSpacing: 1,
                         display: "flex", alignItems: "center", justifyContent: "center", gap: 7, transition: "opacity 0.2s, background 0.3s",
                       }} onMouseEnter={e => e.currentTarget.style.opacity = "0.9"} onMouseLeave={e => e.currentTarget.style.opacity = "1"}>
-                        <Lock size={14} /> STAKE INTO OROx1 PORTFOLIO
+                        <Lock size={14} /> STAKE INTO VGOLD PORTFOLIO
                       </button>
                     </div>
                   </div>
@@ -356,7 +356,7 @@ export default function ORODashboard({ onNavigate }) {
                       </tbody>
                     </table>
                     <div style={{ marginTop: 10, fontSize: 11, color: MUTED, fontStyle: "italic" }}>
-                      Click any cell to update your configuration. Highlighted = current selection. Yields range from 1.2% to 15%. Non-staked tokens earn zero yield.
+                      Click any cell to update your configuration. Highlighted = current selection. Yields range from 1.2% to 15%. Non-staked tokens earn zero yield. All figures are subject to change.
                     </div>
                   </div>
                 )}
@@ -367,7 +367,7 @@ export default function ORODashboard({ onNavigate }) {
                 <div style={{ background: `${MUTED}10`, borderRadius: 8, padding: 7 }}><Coins size={16} color={MUTED} /></div>
                 <div>
                   <div style={{ fontSize: 12, fontWeight: 700, color: DARK }}>Holding Without Staking</div>
-                  <div style={{ fontSize: 11, color: MUTED, marginTop: 2 }}>OROx1 tokens in your wallet retain gold-price exposure and liquidity but earn <strong style={{ color: RED }}>zero yield</strong>. Stake into the OROx1 portfolio to activate returns.</div>
+                  <div style={{ fontSize: 11, color: MUTED, marginTop: 2 }}>VGOLD tokens in your wallet retain gold-price exposure and liquidity but earn <strong style={{ color: RED }}>zero yield</strong>. Stake into the VGOLD portfolio to activate returns.</div>
                 </div>
               </div>
             </div>
@@ -377,11 +377,11 @@ export default function ORODashboard({ onNavigate }) {
 
       <div style={{ borderTop: `1px solid ${BORDER}`, padding: "12px 32px" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 6 }}>
-          <span style={{ fontSize: 9, color: MUTED }}>CONFIDENTIAL · FOR QUALIFIED INVESTORS ONLY · OROx1 Segregated Portfolio</span>
-          <span style={{ fontSize: 9, color: MUTED }}>OROx1 Gold-Backed Digital Asset © 2026</span>
+          <span style={{ fontSize: 9, color: MUTED }}>CONFIDENTIAL · FOR QUALIFIED INVESTORS ONLY · VGOLD Segregated Portfolio</span>
+          <span style={{ fontSize: 9, color: MUTED }}>VGold Gold-Backed Digital Asset © 2026</span>
         </div>
         <div style={{ fontSize: 9, color: MUTED, lineHeight: 1.6 }}>
-          All data, figures, projections, and yields shown are for display purposes only and do not constitute an offer, solicitation, or guarantee of returns.{" "}
+          All data, figures, projections, and yields shown are for informational purposes only, are subject to change, and do not constitute an offer, solicitation, or guarantee of returns.{" "}
           <a href="https://docsend.com" target="_blank" rel="noopener noreferrer" style={{ color: GOLD, textDecoration: "underline" }}>Access the Data Room</a> for official documentation and disclosures.
         </div>
       </div>

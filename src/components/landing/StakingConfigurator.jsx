@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Shield, TrendingUp, Lock, Unlock, Clock, AlertTriangle, Zap, Briefcase, BarChart3, Coins } from "lucide-react";
-import { GOLD, DARK, MUTED, CARD_BG, BORDER, RED } from "../../constants/colors.js";
+import { GOLD, LIME, DARK, MUTED, CARD_BG, BORDER, RED } from "../../constants/colors.js";
 import { timeSteps, riskLabels, riskColors, yieldMatrix, earlyExitFees, portfolioAllocations, strategyDescriptions } from "../../constants/data.js";
 import StepSlider from "../shared/StepSlider.jsx";
 import PortfolioBar from "../shared/PortfolioBar.jsx";
@@ -27,17 +27,17 @@ export default function StakingConfigurator() {
     <SectionWrapper id="staking" style={{ padding: isMobile ? "60px 20px" : "80px 40px", background: "#fff" }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 40 }}>
-          <span style={{ fontSize: 10, color: GOLD, fontWeight: 700, letterSpacing: 2 }}>OROx1 STAKING</span>
+          <span style={{ fontSize: 10, color: GOLD, fontWeight: 700, letterSpacing: 2 }}>VGOLD STAKING</span>
           <h2 style={{ fontSize: isMobile ? 28 : 36, fontWeight: 700, color: DARK, fontFamily: "Georgia, serif", margin: "10px 0 12px" }}>
             Configure Your Yield
           </h2>
           <p style={{ fontSize: 15, color: MUTED, maxWidth: 600, margin: "0 auto", lineHeight: 1.6 }}>
-            Stake your OROx1 into the Segregated Portfolio. Adjust duration and risk to see your projected returns. No staking = no yield.
+            Stake your VGOLD into the Segregated Portfolio. Adjust duration and risk to see your projected returns. No staking = no yield.
           </p>
         </div>
 
         {/* Warning banner */}
-        <div style={{ background: "#FFF8E1", border: `1px solid ${GOLD}30`, borderRadius: 8, padding: "10px 16px", display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 24, maxWidth: 800, margin: "0 auto 24px" }}>
+        <div style={{ background: `${LIME}12`, border: `1px solid ${LIME}30`, borderRadius: 8, padding: "10px 16px", display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 24, maxWidth: 800, margin: "0 auto 24px" }}>
           <AlertTriangle size={16} color={GOLD} style={{ flexShrink: 0, marginTop: 1 }} />
           <span style={{ fontSize: 12, color: DARK, lineHeight: 1.5 }}>
             <strong>Early unstaking</strong> incurs a 1–10% commission depending on risk tier and remaining lock-up. Annual yield: <strong>1.2%–15%</strong> depending on configuration. Non-staked tokens earn <strong>zero yield</strong>.
@@ -45,7 +45,7 @@ export default function StakingConfigurator() {
         </div>
 
         {/* Sliders */}
-        <div style={{ background: "#FAFAF8", border: `1px solid ${BORDER}`, borderRadius: 12, padding: isMobile ? "20px 16px 12px" : "24px 32px 16px", marginBottom: 24, maxWidth: 800, margin: "0 auto 24px" }}>
+        <div style={{ background: "#FAFAF5", border: `1px solid ${BORDER}`, borderRadius: 12, padding: isMobile ? "20px 16px 12px" : "24px 32px 16px", marginBottom: 24, maxWidth: 800, margin: "0 auto 24px" }}>
           <StepSlider idx={timeIdx} count={6} onChange={setTimeIdx} stepLabels={timeSteps.map(t => `${t}mo`)} color={GOLD} title="Lock-Up Duration" icon={Clock} displayValue={`${currentTime} Months`} />
           <div style={{ height: 1, background: BORDER, margin: "12px 0 16px" }} />
           <StepSlider idx={riskIdx} count={5} onChange={setRiskIdx} stepLabels={riskLabels} color={riskColor} title="Risk Profile" icon={AlertTriangle} displayValue={riskLabels[riskIdx]} />
@@ -64,7 +64,7 @@ export default function StakingConfigurator() {
                   </div>
                   <div>
                     <div style={{ fontSize: 16, fontWeight: 700, color: DARK }}>{riskLabels[riskIdx]} · {currentTime} Months</div>
-                    <div style={{ fontSize: 11, color: MUTED }}>OROx1 Segregated Portfolio</div>
+                    <div style={{ fontSize: 11, color: MUTED }}>VGOLD Segregated Portfolio</div>
                   </div>
                 </div>
 
@@ -97,25 +97,25 @@ export default function StakingConfigurator() {
               {/* Right */}
               <div>
                 <div style={{ background: CARD_BG, borderRadius: 10, padding: "14px 16px", marginBottom: 16 }}>
-                  <div style={{ fontSize: 9, color: riskColor, fontWeight: 700, letterSpacing: 1.2, marginBottom: 8, transition: "color 0.3s" }}>OROx1 SP PORTFOLIO ALLOCATION</div>
+                  <div style={{ fontSize: 9, color: riskColor, fontWeight: 700, letterSpacing: 1.2, marginBottom: 8, transition: "color 0.3s" }}>VGOLD SP PORTFOLIO ALLOCATION</div>
                   <PortfolioBar alloc={alloc} />
                   <div style={{ marginTop: 12, fontSize: 11, color: MUTED, lineHeight: 1.6 }}>{strategy}</div>
                 </div>
 
                 <div style={{ marginBottom: 14 }}>
-                  <label style={{ fontSize: 10, color: MUTED, letterSpacing: 0.5, display: "block", marginBottom: 5 }}>STAKE AMOUNT (OROx1)</label>
+                  <label style={{ fontSize: 10, color: MUTED, letterSpacing: 0.5, display: "block", marginBottom: 5 }}>STAKE AMOUNT (VGOLD)</label>
                   <div style={{ display: "flex", border: `1px solid ${BORDER}`, borderRadius: 8, overflow: "hidden" }}>
                     <input type="text" value={stakeAmount} onChange={e => setStakeAmount(e.target.value)} placeholder="0.00"
                       style={{ flex: 1, border: "none", padding: "11px 14px", fontSize: 16, fontWeight: 600, fontFamily: "Georgia, serif", outline: "none", color: DARK, background: "transparent" }} />
                     <button onClick={() => setStakeAmount("1250")} style={{ background: CARD_BG, border: "none", borderLeft: `1px solid ${BORDER}`, padding: "0 14px", fontSize: 10, fontWeight: 700, color: GOLD, cursor: "pointer", letterSpacing: 1 }}>MAX</button>
                   </div>
-                  <div style={{ fontSize: 10, color: MUTED, marginTop: 5 }}>Available: 1,250.00 OROx1</div>
+                  <div style={{ fontSize: 10, color: MUTED, marginTop: 5 }}>Available: 1,250.00 VGOLD</div>
                 </div>
 
                 {estEarnings && (
                   <div style={{ background: `${riskColor}08`, borderRadius: 8, padding: "10px 14px", marginBottom: 14, display: "flex", justifyContent: "space-between", alignItems: "center", transition: "background 0.3s" }}>
                     <span style={{ fontSize: 11, color: MUTED }}>Est. earnings over {currentTime}mo</span>
-                    <span style={{ fontSize: 16, fontWeight: 700, color: riskColor, fontFamily: "Georgia, serif" }}>{estEarnings} ORO</span>
+                    <span style={{ fontSize: 16, fontWeight: 700, color: riskColor, fontFamily: "Georgia, serif" }}>{estEarnings} VGOLD</span>
                   </div>
                 )}
 
@@ -124,7 +124,7 @@ export default function StakingConfigurator() {
                   padding: "14px", fontSize: 12, fontWeight: 700, cursor: "pointer", letterSpacing: 1,
                   display: "flex", alignItems: "center", justifyContent: "center", gap: 7, transition: "opacity 0.2s, background 0.3s",
                 }} onMouseEnter={e => e.currentTarget.style.opacity = "0.9"} onMouseLeave={e => e.currentTarget.style.opacity = "1"}>
-                  <Lock size={14} /> STAKE INTO OROx1 PORTFOLIO
+                  <Lock size={14} /> STAKE INTO VGOLD PORTFOLIO
                 </button>
 
                 {/* No staking reminder */}

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ChevronRight, Info, Globe, BarChart3, CheckCircle, Clock, DollarSign, ArrowUpRight } from "lucide-react";
-import { GOLD, GOLD_LIGHT, GOLD_DIM, DARK, MUTED, CARD_BG, BORDER } from "../../constants/colors.js";
+import { GOLD, GOLD_LIGHT, GOLD_DIM, LIME, DARK, MUTED, CARD_BG, BORDER } from "../../constants/colors.js";
 import { tranches } from "../../constants/data.js";
 import StatusBadge from "../shared/StatusBadge.jsx";
 import AllocationBar from "../shared/AllocationBar.jsx";
@@ -17,15 +17,15 @@ export default function TrancheTableSection() {
   const pctDeployed = ((totalReserved / 10000000) * 100).toFixed(1);
 
   return (
-    <SectionWrapper id="tranches" style={{ padding: isMobile ? "60px 20px" : "80px 40px", background: "#FAFAF8" }}>
+    <SectionWrapper id="tranches" style={{ padding: isMobile ? "60px 20px" : "80px 40px", background: "#FAFAF5" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 40 }}>
           <span style={{ fontSize: 10, color: GOLD, fontWeight: 700, letterSpacing: 2 }}>INVESTMENT TRANCHES</span>
           <h2 style={{ fontSize: isMobile ? 28 : 36, fontWeight: 700, color: DARK, fontFamily: "Georgia, serif", margin: "10px 0 12px" }}>
-            OROx1 Gold Reserve Tranches
+            VGOLD Gold Reserve Tranches
           </h2>
           <p style={{ fontSize: 15, color: MUTED, maxWidth: 600, margin: "0 auto", lineHeight: 1.6 }}>
-            5 tranches · 10,000,000 total ounces · JORC/43-101 · 1 ORO = 1 troy oz
+            5 tranches · 10,000,000 total ounces · JORC/43-101 · 1 VGOLD = 1 troy oz
           </p>
         </div>
 
@@ -96,7 +96,7 @@ export default function TrancheTableSection() {
               </div>
             ))}
             <div style={{ display: "grid", gridTemplateColumns: "0.35fr 1.3fr 0.7fr 0.85fr 0.7fr 1.1fr 0.55fr", padding: "12px 16px", background: GOLD, gap: 6, alignItems: "center" }}>
-              <div /><div style={{ fontSize: 12, fontWeight: 700, color: "#fff", letterSpacing: 1 }}>TOTAL OROx1</div><div /><div style={{ fontSize: 14, fontWeight: 700, color: "#fff", fontFamily: "Georgia, serif" }}>10.0M</div><div /><div style={{ fontSize: 11, fontWeight: 600, color: "#fff" }}>{pctDeployed}% committed</div><div />
+              <div /><div style={{ fontSize: 12, fontWeight: 700, color: "#fff", letterSpacing: 1 }}>TOTAL VGOLD</div><div /><div style={{ fontSize: 14, fontWeight: 700, color: "#fff", fontFamily: "Georgia, serif" }}>10.0M</div><div /><div style={{ fontSize: 11, fontWeight: 600, color: "#fff" }}>{pctDeployed}% committed</div><div />
             </div>
           </div>
         )}

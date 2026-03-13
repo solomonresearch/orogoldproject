@@ -2,7 +2,7 @@ import Tip from "./Tip.jsx";
 import { GOLD, MUTED, DARK } from "../../constants/colors.js";
 
 const segments = [
-  { key: "physicalGold", label: "Physical & Digital Gold", color: GOLD, sub: "Bullion vaults + OROx tokens" },
+  { key: "physicalGold", label: "Physical & Digital Gold", color: GOLD, sub: "Bullion vaults + VGOLD tokens" },
   { key: "productionContracts", label: "Secured Production Contracts", color: "#2E8B57", sub: "Doré & refined gold · $750–$2,000/oz · up to 15yrs" },
   { key: "qualifiedReserves", label: "Qualified Reserves", color: "#5B6ABF", sub: "JORC/43-101 certified" },
   { key: "liquidity", label: "Liquid Assets (USD / USDC)", color: "#4A90D9", sub: "Liquidity buffer + mine capex funding" },

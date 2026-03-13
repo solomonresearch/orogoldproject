@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Gem, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { GOLD, GOLD_LIGHT, DARK, MUTED, BORDER } from "../../constants/colors.js";
+import VGoldMark from "../shared/VGoldMark.jsx";
 
 const navLinks = [
   { label: "How It Works", href: "#how-it-works" },
@@ -9,6 +10,7 @@ const navLinks = [
   { label: "Staking", href: "#staking" },
   { label: "Portfolio", href: "#portfolio" },
   { label: "Roadmap", href: "#roadmap" },
+  { label: "Reserves", href: "/proof-of-reserves" },
   { label: "FAQ", href: "#faq" },
 ];
 
@@ -36,11 +38,10 @@ export default function StickyNav({ onNavigate }) {
           }}
         >
           <div style={{ maxWidth: 1200, margin: "0 auto", padding: "10px 32px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-              <Gem size={20} color={GOLD} strokeWidth={1.5} />
-              <a href="#hero" style={{ fontSize: 18, fontWeight: 700, color: GOLD, letterSpacing: 3, fontFamily: "Georgia, serif", textDecoration: "none" }}>ORO</a>
-              <span style={{ fontSize: 11, fontWeight: 600, color: DARK }}>x1</span>
-            </div>
+            <a href="#hero" style={{ display: "flex", alignItems: "center", gap: 8, textDecoration: "none" }}>
+              <VGoldMark size={22} />
+              <span style={{ fontSize: 18, fontWeight: 700, color: GOLD, letterSpacing: 2, fontFamily: "Georgia, serif" }}>VGold</span>
+            </a>
 
             <div style={{ display: "flex", alignItems: "center", gap: 4 }}>
               {navLinks.map((link, i) => (

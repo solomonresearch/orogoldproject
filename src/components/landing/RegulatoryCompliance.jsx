@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Shield, Globe, CheckCircle, Lock } from "lucide-react";
-import { GOLD, DARK, MUTED, BORDER } from "../../constants/colors.js";
+import { GOLD, LIME, DARK, MUTED, BORDER } from "../../constants/colors.js";
 import SectionWrapper from "../shared/SectionWrapper.jsx";
 import useIsMobile from "../../hooks/useIsMobile.js";
 
@@ -37,11 +37,11 @@ export default function RegulatoryCompliance() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.06, duration: 0.4 }}
-              style={{ background: "#FAFAF8", border: `1px solid ${BORDER}`, borderRadius: 10, padding: "20px 14px", textAlign: "center", transition: "border-color 0.2s" }}
+              style={{ background: "#FAFAF5", border: `1px solid ${BORDER}`, borderRadius: 10, padding: "20px 14px", textAlign: "center", transition: "border-color 0.2s" }}
               onMouseEnter={e => e.currentTarget.style.borderColor = GOLD}
               onMouseLeave={e => e.currentTarget.style.borderColor = BORDER}
             >
-              <div style={{ background: `${GOLD}10`, borderRadius: "50%", width: 40, height: 40, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 10px" }}>
+              <div style={{ background: `${LIME}18`, borderRadius: "50%", width: 40, height: 40, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 10px" }}>
                 <badge.icon size={18} color={GOLD} strokeWidth={1.5} />
               </div>
               <div style={{ fontSize: 12, fontWeight: 700, color: DARK, marginBottom: 2 }}>{badge.label}</div>
